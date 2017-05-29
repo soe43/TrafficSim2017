@@ -18,7 +18,7 @@ void draw() {
 }
 
 void mouseClicked() {
-  Car newCar = new Car(mouseX, mouseY);
+  Car newCar = new Car(mouseX, mouseY, random(-5, 5));
   newCar.drawMe();
   cars.add(newCar);
 }

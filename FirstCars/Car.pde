@@ -6,14 +6,14 @@ public class Car {
   private float speed; //number of pixels moved per tick
   private float angle; //orientation of the car (0 to 360 degrees) 
 
-  public Car(float x, float y) { 
+  public Car(float x, float y, float orientation) { 
     //what should be set here?
     width = 15; 
     length = 30;
     xcor = x;
     ycor = y;
     speed = 1;
-    angle = 0;
+    angle = orientation;
   }
 
   //drawing of the car: 
@@ -80,6 +80,10 @@ public class Car {
 
   public void move() {
 
+    rotate(radians(angle));
+    xcor += speed;
+    rotate(radians(0.0 - angle));
+    /*
     if (angle == 0) { //move right 
       xcor += speed;
     } else if (angle == 90) { //move up
@@ -91,6 +95,6 @@ public class Car {
     } else {
       //continue turning sequence:
       //turn()
-    }
+    }*/ 
   }
 }
