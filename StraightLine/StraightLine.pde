@@ -22,9 +22,16 @@ void draw() {
   data.drawMap();
 
   noStroke(); //so there's no outline on the cars
-  for (Car c : cars) {
+  for (int i = 0; i < cars.size(); i++) {
+    Car c = cars.get(i);
     c.move();
     c.drawMe();
+
+    //NEED TO CHECK IF AT A SPOT IN KILLABLE, THEN KILL
+    if (data.toBeKilled(c)) { 
+      cars.remove(c);
+      i--;
+    }
   }
 
   timer--; 
@@ -38,7 +45,7 @@ void draw() {
       //BIDIRECTIONALITY 
       //right now, it's just (widthRoad - widthCar) / 2, fairly simple to calculate.
       //most likely will stick to that formula
-      
+
       Car c = new Car(rd.getRow() * 50, rd.getCol() * 50 + adjustment, 0);
       cars.add(c);
       c.drawMe();

@@ -4,9 +4,10 @@ public class Map {
   private GridSquare[][] data;
   private int maxX;
   private int maxY;
-  private ArrayList<Road> spawnable = new ArrayList<Road>();
 
-  //for all the Roads that have true values of the boolean isStart
+  //FOR SPAWNING/KILLING CARS
+  private ArrayList<Road> spawnable = new ArrayList<Road>(); //isStart == true
+  private ArrayList<Road> killable = new ArrayList<Road>(); //isEnd == true
 
   //maxX, maxY are the screen dimensions (size(x,y)) 
   public Map(int gridR, int gridC, int maxX, int maxY) {
@@ -22,7 +23,9 @@ public class Map {
           spawnable.add(rd);
           data[r][c] = rd;
         } else if (r == gridR - 1 && c == 2) { //you're the end road
-          data[r][c] = new Road(r, c, false, true);
+          Road rd = new Road(r, c, false, true);
+          killable.add(rd);
+          data[r][c] = rd;
         } else if (c == 2) {
           data[r][c] = new Road(r, c, false, false); //making a horizontal road
         } else {
@@ -40,6 +43,16 @@ public class Map {
   public ArrayList<Road> getSpawnable() {
     return spawnable;
   }
+
+  public ArrayList<Road> getKillable() {
+    return killable;
+  }
+  
+  public boolean toBeKilled(Car c){
+    GridSquare gs = data[int(c.getX() / 50)][int(c.getY() / 50)];
+    return killable.indexOf(gs) != -1;
+  }
+
   //only gets called once (in the setup of BasicMap)
   public void drawMap() {
     for (int r = 0; r < data.length; r++) {

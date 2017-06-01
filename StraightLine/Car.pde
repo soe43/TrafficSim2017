@@ -5,12 +5,12 @@ public class Car {
   private float ycor;
   private float speed; //number of pixels moved per tick
   private float angle; //orientation of the car (0 to 360 degrees) 
-  
-  private GridSquare current;
+
+  private Road current;
   private GridSquare nextUp;
   private GridSquare nextLeft;
   private GridSquare nextRight;
-  
+
 
   public Car(float x, float y, float orientation) { 
     //what should be set here?
@@ -39,6 +39,22 @@ public class Car {
 
   public float getY() {
     return ycor;
+  }
+
+  public Road current() {
+    return current;
+  }
+
+  public GridSquare nextUp() {
+    return nextUp;
+  }
+
+  public GridSquare nextLeft() {
+    return nextLeft;
+  }
+
+  public GridSquare nextRight() {
+    return nextRight;
   }
 
   public float getAngle() {
@@ -87,22 +103,22 @@ public class Car {
   public void move() {
 
     //rotate(radians(angle));
-    xcor += speed;
+    xcor += speed; //only works for moving on a horizontal plane
     //rotate(radians(0.0 - angle));
     
     
     /*
     if (angle == 0) { //move right 
-      xcor += speed;
-    } else if (angle == 90) { //move up
-      ycor += speed;
-    } else if (angle == 180) { //move left
-      xcor -= speed;
-    } else if (angle == 270) { //move down
-      ycor -= speed;
-    } else {
-      //continue turning sequence:
-      //turn()
-    }*/ 
+     xcor += speed;
+     } else if (angle == 90) { //move up
+     ycor += speed;
+     } else if (angle == 180) { //move left
+     xcor -= speed;
+     } else if (angle == 270) { //move down
+     ycor -= speed;
+     } else {
+     //continue turning sequence:
+     //turn()
+     }*/
   }
 }
