@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class Map {
-  private GridSquare[][] data;
+  public GridSquare[][] data;
   private int maxX;
   private int maxY;
 
@@ -15,9 +15,10 @@ public class Map {
     this.maxY = maxY;
 
     data = new GridSquare[gridR][gridC];
-
+    
+    //could add a toggle for 'choose pre-generated map'   
     for (int r = 0; r < gridR; r++) {
-      for (int c = 0; c < gridC; c++) {
+      for (int c = 0; c < gridC; c++) {    
         if (r == 0 && c == 2) { //you're the start road
           Road rd = new Road(r, c, true, false);
           spawnable.add(rd);
@@ -32,6 +33,31 @@ public class Map {
           data[r][c] = new GridSquare(r, c, 130); // set to the normal gray
         }
       }
+    }
+    
+    //editing the map further:
+    int i = 0;
+    while(i < gridC){
+      data[11][i] = new Road(11, i, false, false);
+      i++;
+    }
+  }
+
+
+
+  //called as the update function in the Map class
+  public void updateCar(Car c) {
+    c.move();
+    c.drawMe();
+
+
+    //changing current, nextUp, nextLeft, nextRight FOR EACH DIFFERENT ORIENTATION
+    //draw diagrams for this (will be easier to understand, trust me...
+    if (c.getAngle() == 0) { // to the right is front
+      nextUp()
+    } else if (c.getAngle() == 90 ) { // upwards is front
+    } else if (c.getAngle() == 180) { // to the left is front
+    } else { // downwards is front
     }
   }
 
@@ -62,9 +88,6 @@ public class Map {
       }
     }
   }
-
-
-
 
 
   /* //NOT BEING USED RIGHT NOW

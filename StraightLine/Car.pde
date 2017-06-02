@@ -20,14 +20,34 @@ public class Car {
     ycor = y;
     speed = 1;
     angle = orientation;
+    // Map.updateCar(this);
   }
 
   //drawing of the car: 
   public void drawMe() {
     fill(98, 229, 129); //a fun light green
-    //rotate(radians(angle)); //rotate the plane
-    rect(xcor, ycor, length, width);
-    //rotate(radians(0.0 - angle)); //rotate the plane back
+
+    if (angle == 0 || angle == 180) { //if you're horizontal
+      rect(xcor, ycor, length, width);
+    } else { //if you're vertical
+      rect(xcor, ycor, width, length);
+    }
+  }
+
+
+
+  //moving the car!
+  //will have to be changed with PVectors...
+  public void move() {
+    if (angle == 0) { //going to the right
+      xcor += speed;
+    } else if (angle == 90) { //going up 
+      ycor += speed;
+    } else if (angle == 180) { //going to the left
+      xcor -= speed;
+    } else { //going down (angle == 270)
+      ycor -= speed;
+    }
   }
 
 
@@ -89,36 +109,5 @@ public class Car {
   public void incAngle(float a) {
     angle += a;
     angle = Math.abs(angle % 360);
-  }
-
-
-
-
-  //Am I on a road? (should it be: will I be on a road after I move x steps)
-  /*
-  public boolean isOnRoad(){
-   return getSquare(int(xcor / 50), int(ycor / 50)) instanceof Road;
-   }*/
-
-  public void move() {
-
-    //rotate(radians(angle));
-    xcor += speed; //only works for moving on a horizontal plane
-    //rotate(radians(0.0 - angle));
-    
-    
-    /*
-    if (angle == 0) { //move right 
-     xcor += speed;
-     } else if (angle == 90) { //move up
-     ycor += speed;
-     } else if (angle == 180) { //move left
-     xcor -= speed;
-     } else if (angle == 270) { //move down
-     ycor -= speed;
-     } else {
-     //continue turning sequence:
-     //turn()
-     }*/
   }
 }
