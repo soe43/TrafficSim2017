@@ -53,14 +53,10 @@ public class Car {
     angle = Math.abs(angle % 360);    
   }
   
-  
-  
-  
-  //Am I on a road? (should it be: will I be on a road after I move x steps)
-  /*
-  public boolean isOnRoad(){
-    return getSquare(int(xcor / 50), int(ycor / 50)) instanceof Road;
-  }*/
+  //Will I be on a road? (should it be: will I be on a road after I move x steps)
+  public boolean isOnRoad(GridSquare qs){
+    return qs.getDrivable();
+  }
    
   public void move(){
   

@@ -9,9 +9,25 @@ void setup() {
   data.drawMap();
 }
 
+
 void draw() {
-  data.drawMap();
+//  if(!data.toggleBuild){
+  //  data.drawMap();
+  //}
+  //else{
+    //data.toggleBuild();
+  //}
+//}
 }
+
+void keyPressed(){  
+  if (keyCode == 66) {
+    print(keyCode);
+    data.toggleBuild = !data.toggleBuild;
+    data.toggleBuild();
+  }
+}
+
 
 void mouseClicked() {
   data.updateMap(mouseX, mouseY);

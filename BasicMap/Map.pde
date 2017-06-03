@@ -1,7 +1,9 @@
 public class Map {
   private GridSquare[][] data;
+  private Intersection[] inters;
   private int maxX;
   private int maxY;
+  private boolean toggleBuild;
 
   //maxX, maxY are the screen dimensions (size(x,y)) 
   public Map(int gridR, int gridC, int maxX, int maxY) {
@@ -15,6 +17,8 @@ public class Map {
         data[r][c] = new GridSquare(130); // set to the normal gray
       }
     }
+
+    toggleBuild = false;
   }
 
   //accessor method
@@ -37,12 +41,28 @@ public class Map {
     //find the grid square
     GridSquare gs = getSquare(int(x / 50), int(y / 50));
     if (gs.getColor() == 130) {
-      data[int(x / 50)][int(y / 50)] = new Road(); 
-    } else if (gs.getColor() == 0){
+      data[int(x / 50)][int(y / 50)] = new Road();
+    } else if (gs.getColor() == 0) {
       data[int(x / 50)][int(y / 50)] = new GridSquare(130);
     }
   }
-  
-  
 
-} 
+  public void toggleBuild() {
+    if (toggleBuild) {
+      for (int   r = 0; r < data.length; r++) {
+        for (int c = 0; c < data[r].length; c++) {
+          fill(data[r][c].getColor());
+          rect(r * 50, c * 50, 50, 50, 7);
+        }
+      }
+    }
+    else if (!toggleBuild) {
+      for (int   r = 0; r < data.length; r++) {
+        for (int c = 0; c < data[r].length; c++) {
+          fill(data[r][c].getColor());
+          rect(r * 50, c * 50, 50, 50);
+        }
+      }
+    }
+  }
+}

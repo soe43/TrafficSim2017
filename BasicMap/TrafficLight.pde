@@ -1,4 +1,5 @@
 public class TrafficLight{
+  private int mode; //numbers 
   private int orientation; //1-4, where each increment is a turn of 90 degrees.
   private int currentTick; //ticks left until next switch
   private int ticktiming; //time until it changes orientation
