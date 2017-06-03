@@ -42,13 +42,60 @@ public class Car {
     if (angle == 0) { //going to the right
       xcor += speed;
     } else if (angle == 90) { //going up 
-      ycor += speed;
+      ycor -= speed;
     } else if (angle == 180) { //going to the left
       xcor -= speed;
     } else { //going down (angle == 270)
-      ycor -= speed;
+      ycor += speed;
     }
   }
+
+  //turn the car!
+  public void turn() {
+    ArrayList<String> choices = new ArrayList<String>();
+    if (angle == 0 && xcor % 50 == 25) {
+      if (nextUp.canDrive()) choices.add("S"); //stay straight
+      if (nextLeft.canDrive()) choices.add("L"); //go left
+      if (nextRight.canDrive()) choices.add("R"); //go right
+
+      int i = int(random(choices.size()));
+      if (choices.get(i).equals("L")) angle = 90;
+      if (choices.get(i).equals("R")) angle = 270;
+      //else do nothing (stay straight)
+      move();
+    } else if (angle == 180 && xcor % 50 == 25) {
+      if (nextUp.canDrive()) choices.add("S"); //stay straight
+      if (nextLeft.canDrive()) choices.add("L"); //go left
+      if (nextRight.canDrive()) choices.add("R"); //go right
+
+      int i = int(random(choices.size()));
+      if (choices.get(i).equals("L")) angle = 270;
+      if (choices.get(i).equals("R")) angle = 90;
+      //else do nothing (stay straight)
+      move();
+    } else if (angle == 90 && ycor % 50 == 25) {
+      if (nextUp.canDrive()) choices.add("S"); //stay straight
+      if (nextLeft.canDrive()) choices.add("L"); //go left
+      if (nextRight.canDrive()) choices.add("R"); //go right
+
+      int i = int(random(choices.size()));
+      if (choices.get(i).equals("L")) angle = 180;
+      if (choices.get(i).equals("R")) angle = 0;
+      //else do nothing (stay straight)
+      move();
+    } else if (angle == 270 && ycor % 50 == 25) {
+      if (nextUp.canDrive()) choices.add("S"); //stay straight
+      if (nextLeft.canDrive()) choices.add("L"); //go left
+      if (nextRight.canDrive()) choices.add("R"); //go right
+
+      int i = int(random(choices.size()));
+      if (choices.get(i).equals("L")) angle = 0;
+      if (choices.get(i).equals("R")) angle = 180;
+      //else do nothing (stay straight)
+      move();
+    }
+  }
+
 
 
 

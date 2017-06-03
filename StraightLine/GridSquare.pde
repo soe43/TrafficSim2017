@@ -1,7 +1,8 @@
 public class GridSquare {
   //NEEDS TO BE NAMED THE BRITISH VERSION 
-  int colour = 0; //single, 0-256 for now (could change later to trio)
-  int row, col; 
+  private int colour = 0; //single, 0-256 for now (could change later to trio)
+  private int row, col;
+  private boolean isDrivable = false;
 
   public GridSquare(int r, int c, int colour) {
     this.colour = colour;
@@ -23,5 +24,10 @@ public class GridSquare {
 
   public int getCol() {
     return col;
+  }
+
+  //always false;
+  public boolean canDrive() {
+    return isDrivable;
   }
 }

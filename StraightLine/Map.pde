@@ -37,20 +37,25 @@ public class Map {
 
     //editing the map further:
     int i = 0;
-    while (i < gridC) {
+    while (i < gridC) {   
       data[11][i] = new Road(11, i, false, false);
       i++;
     }
+    
+    Road k1 = new Road(11, 0, false, true);
+    Road k2 = new Road(11, 12, false, true);
+    killable.add(k1);
+    killable.add(k2);
+    data[11][0] = k1;
+    data[11][12] = k2;
+ 
+    
   }
 
 
 
   //called as the update function in the Map class
   public void updateCar(Car c) {
-    c.move();
-    c.drawMe();
-
-
     //changing current, nextUp, nextLeft, nextRight FOR EACH DIFFERENT ORIENTATION
     //draw diagrams for this (will be easier to understand, trust me...
     if (c.getAngle() == 0) { // to the right is front
@@ -134,6 +139,13 @@ public class Map {
         c.setRight(null);
       }
     }
+    c.turn();
+    c.move();
+    c.drawMe();
+
+
+
+    
   }
 
   //accessor method
