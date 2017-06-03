@@ -11,6 +11,7 @@ public class Car {
   private GridSquare nextLeft;
   private GridSquare nextRight;
 
+  private int turnTick = 10;
 
   public Car(float x, float y, float orientation) { 
     //what should be set here?
@@ -48,10 +49,17 @@ public class Car {
     } else { //going down (angle == 270)
       ycor += speed;
     }
+
+    turnTick--;
   }
 
   //turn the car!
   public void turn() {
+    //added on the buffer to get rid of the double turning bug 
+    if (turnTick != 0) {
+      return;
+    }
+
     ArrayList<String> choices = new ArrayList<String>();
     if (angle == 0 && xcor % 50 == 25) {
       if (nextUp.canDrive()) choices.add("S"); //stay straight
@@ -63,6 +71,7 @@ public class Car {
       if (choices.get(i).equals("R")) angle = 270;
       //else do nothing (stay straight)
       move();
+      turnTick = 10;
     } else if (angle == 180 && xcor % 50 == 25) {
       if (nextUp.canDrive()) choices.add("S"); //stay straight
       if (nextLeft.canDrive()) choices.add("L"); //go left
@@ -73,6 +82,7 @@ public class Car {
       if (choices.get(i).equals("R")) angle = 90;
       //else do nothing (stay straight)
       move();
+      turnTick = 10;
     } else if (angle == 90 && ycor % 50 == 25) {
       if (nextUp.canDrive()) choices.add("S"); //stay straight
       if (nextLeft.canDrive()) choices.add("L"); //go left
@@ -83,6 +93,7 @@ public class Car {
       if (choices.get(i).equals("R")) angle = 0;
       //else do nothing (stay straight)
       move();
+      turnTick = 10;
     } else if (angle == 270 && ycor % 50 == 25) {
       if (nextUp.canDrive()) choices.add("S"); //stay straight
       if (nextLeft.canDrive()) choices.add("L"); //go left
@@ -93,6 +104,7 @@ public class Car {
       if (choices.get(i).equals("R")) angle = 180;
       //else do nothing (stay straight)
       move();
+      turnTick = 10;
     }
   }
 

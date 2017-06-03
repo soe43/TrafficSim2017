@@ -41,15 +41,13 @@ public class Map {
       data[11][i] = new Road(11, i, false, false);
       i++;
     }
-    
+
     Road k1 = new Road(11, 0, false, true);
     Road k2 = new Road(11, 12, false, true);
     killable.add(k1);
     killable.add(k2);
     data[11][0] = k1;
     data[11][12] = k2;
- 
-    
   }
 
 
@@ -142,10 +140,6 @@ public class Map {
     c.turn();
     c.move();
     c.drawMe();
-
-
-
-    
   }
 
   //accessor method
@@ -159,7 +153,7 @@ public class Map {
 
   public ArrayList<Road> getKillable() {
     return killable;
-  }
+  }    
 
   public boolean toBeKilled(Car c) {
     GridSquare gs = data[int(c.getX() / 50)][int(c.getY() / 50)];
