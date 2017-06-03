@@ -6,7 +6,7 @@ public class Car {
   private float speed; //number of pixels moved per tick
   private float angle; //orientation of the car (0 to 360 degrees) 
 
-  private Road current;
+  private GridSquare current;
   private GridSquare nextUp;
   private GridSquare nextLeft;
   private GridSquare nextRight;
@@ -61,7 +61,7 @@ public class Car {
     return ycor;
   }
 
-  public Road current() {
+  public GridSquare current() {
     return current;
   }
 
@@ -86,6 +86,7 @@ public class Car {
   }
 
   //mutators: 
+
   public void incX(float x) {
     xcor += x;
   }
@@ -109,5 +110,22 @@ public class Car {
   public void incAngle(float a) {
     angle += a;
     angle = Math.abs(angle % 360);
+  }
+
+  //more mutators: setting the adjacent squares
+  public void setCurrent(GridSquare g) {
+    current = g;
+  }
+
+  public void setNextUp(GridSquare g) {
+    nextUp = g;
+  }
+
+  public void setLeft(GridSquare g) {
+    nextLeft = g;
+  }
+
+  public void setRight(GridSquare g) {
+    nextRight = g;
   }
 }

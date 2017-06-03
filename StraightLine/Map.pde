@@ -15,7 +15,7 @@ public class Map {
     this.maxY = maxY;
 
     data = new GridSquare[gridR][gridC];
-    
+
     //could add a toggle for 'choose pre-generated map'   
     for (int r = 0; r < gridR; r++) {
       for (int c = 0; c < gridC; c++) {    
@@ -34,10 +34,10 @@ public class Map {
         }
       }
     }
-    
+
     //editing the map further:
     int i = 0;
-    while(i < gridC){
+    while (i < gridC) {
       data[11][i] = new Road(11, i, false, false);
       i++;
     }
@@ -54,10 +54,85 @@ public class Map {
     //changing current, nextUp, nextLeft, nextRight FOR EACH DIFFERENT ORIENTATION
     //draw diagrams for this (will be easier to understand, trust me...
     if (c.getAngle() == 0) { // to the right is front
-      nextUp()
+      c.setCurrent(getSquare(int(c.getX() / 50), int(c.getY() / 50)));
+      try {
+        c.setNextUp(getSquare(int(c.getX() / 50 + 1), int(c.getY() / 50)));
+      }
+      catch(ArrayIndexOutOfBoundsException e) {
+        c.setNextUp(null);
+      }
+      try {
+        c.setLeft(getSquare(int(c.getX() / 50), int(c.getY() / 50 + 1)));
+      }
+      catch(ArrayIndexOutOfBoundsException e) {
+        c.setLeft(null);
+      }
+      try {
+        c.setRight(getSquare(int(c.getX() / 50), int(c.getY() / 50 - 1)));
+      }
+      catch(ArrayIndexOutOfBoundsException e) {
+        c.setRight(null);
+      }
     } else if (c.getAngle() == 90 ) { // upwards is front
+      c.setCurrent(getSquare(int(c.getX() / 50), int(c.getY() / 50)));
+      try {
+        c.setNextUp(getSquare(int(c.getX() / 50), int(c.getY() / 50 + 1)));
+      }
+      catch(ArrayIndexOutOfBoundsException e) {
+        c.setNextUp(null);
+      }
+      try {
+        c.setLeft(getSquare(int(c.getX() / 50 - 1), int(c.getY() / 50)));
+      }
+      catch(ArrayIndexOutOfBoundsException e) {
+        c.setLeft(null);
+      }
+      try {
+        c.setRight(getSquare(int(c.getX() / 50 + 1), int(c.getY() / 50)));
+      }
+      catch(ArrayIndexOutOfBoundsException e) {
+        c.setRight(null);
+      }
     } else if (c.getAngle() == 180) { // to the left is front
+      c.setCurrent(getSquare(int(c.getX() / 50), int(c.getY() / 50)));
+      try {
+        c.setNextUp(getSquare(int(c.getX() / 50 - 1), int(c.getY() / 50)));
+      }
+      catch(ArrayIndexOutOfBoundsException e) {
+        c.setNextUp(null);
+      }
+      try {
+        c.setLeft(getSquare(int(c.getX() / 50), int(c.getY() / 50 - 1)));
+      }
+      catch(ArrayIndexOutOfBoundsException e) {
+        c.setLeft(null);
+      }
+      try {
+        c.setRight(getSquare(int(c.getX() / 50), int(c.getY() / 50 + 1)));
+      }
+      catch(ArrayIndexOutOfBoundsException e) {
+        c.setRight(null);
+      }
     } else { // downwards is front
+      c.setCurrent(getSquare(int(c.getX() / 50), int(c.getY() / 50)));
+      try {
+        c.setNextUp(getSquare(int(c.getX() / 50), int(c.getY() / 50 - 1)));
+      }
+      catch(ArrayIndexOutOfBoundsException e) {
+        c.setNextUp(null);
+      }
+      try {
+        c.setLeft(getSquare(int(c.getX() / 50 + 1), int(c.getY() / 50)));
+      }
+      catch(ArrayIndexOutOfBoundsException e) {
+        c.setLeft(null);
+      }
+      try {
+        c.setRight(getSquare(int(c.getX() / 50 - 1), int(c.getY() / 50)));
+      }
+      catch(ArrayIndexOutOfBoundsException e) {
+        c.setRight(null);
+      }
     }
   }
 
@@ -73,8 +148,8 @@ public class Map {
   public ArrayList<Road> getKillable() {
     return killable;
   }
-  
-  public boolean toBeKilled(Car c){
+
+  public boolean toBeKilled(Car c) {
     GridSquare gs = data[int(c.getX() / 50)][int(c.getY() / 50)];
     return killable.indexOf(gs) != -1;
   }
