@@ -56,7 +56,7 @@ public class Car {
   //turn the car!
   public void turn() {
     //added on the buffer to get rid of the double turning bug 
-    if (turnTick != 0) {
+    if (turnTick > 0) {
       return;
     }
 
