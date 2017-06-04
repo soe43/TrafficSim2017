@@ -67,8 +67,14 @@ public class Car {
       if (nextRight.canDrive()) choices.add("R"); //go right
 
       int i = int(random(choices.size()));
-      if (choices.get(i).equals("L")) angle = 90;
-      if (choices.get(i).equals("R")) angle = 270;
+      if (choices.get(i).equals("L")){
+        angle = 90;
+        xcor -= 7.5; //precalculated adjustment     
+      }
+      if (choices.get(i).equals("R")){
+        angle = 270;
+        xcor -= 7.5;
+      }
       //else do nothing (stay straight)
       move();
       turnTick = 10;
