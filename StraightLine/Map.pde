@@ -16,6 +16,7 @@ public class Map {
 
     data = new GridSquare[gridR][gridC];
 
+    //THIS IS WHERE YOU SWITCH STUFF FOR TESTS!
     //could add a toggle for 'choose pre-generated map'   
     for (int r = 0; r < gridR; r++) {
       for (int c = 0; c < gridC; c++) {    
@@ -41,7 +42,9 @@ public class Map {
       data[11][i] = new Road(11, i, false, false);
       i++;
     }
-
+    
+    
+    //SWITCH THESE FOR TESTS!!!
     Road k1 = new Road(11, 0, true, false);
     Road k2 = new Road(11, 12, false, true);
     spawnable.add(k1);

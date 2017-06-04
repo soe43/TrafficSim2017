@@ -51,6 +51,9 @@ void draw() {
       //right now, it's just ((widthRoad / lanesRoad) - widthCar) / 2, fairly simple to calculate.
       //most likely will stick to that formula
       
+      
+      //CHANGE HERE FOR TESTS!!!
+      
       //horizontal:
       //Car c = new Car(rd.getRow() * 50, rd.getCol() * 50 + adjustment, 180 or 0);
       
