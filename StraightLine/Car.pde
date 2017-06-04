@@ -69,11 +69,11 @@ public class Car {
       int i = int(random(choices.size()));
       if (choices.get(i).equals("L")){
         angle = 90;
-        xcor -= 7.5; //precalculated adjustment     
+        xcor -= width / 2; //precalculated adjustment     
       }
       if (choices.get(i).equals("R")){
         angle = 270;
-        xcor -= 7.5;
+        xcor -= width / 2; // xcor -= (widthCar) / 2; 
       }
       //else do nothing (stay straight)
       move();
@@ -84,8 +84,14 @@ public class Car {
       if (nextRight.canDrive()) choices.add("R"); //go right
 
       int i = int(random(choices.size()));
-      if (choices.get(i).equals("L")) angle = 270;
-      if (choices.get(i).equals("R")) angle = 90;
+      if (choices.get(i).equals("L")){
+        angle = 270;
+        xcor -= width / 2;
+      }
+      if (choices.get(i).equals("R")){
+        angle = 90;
+        xcor -= width / 2;
+      }
       //else do nothing (stay straight)
       move();
       turnTick = 10;
@@ -95,8 +101,14 @@ public class Car {
       if (nextRight.canDrive()) choices.add("R"); //go right
 
       int i = int(random(choices.size()));
-      if (choices.get(i).equals("L")) angle = 180;
-      if (choices.get(i).equals("R")) angle = 0;
+      if (choices.get(i).equals("L")){
+        angle = 180;
+        ycor -= width / 2;
+      }
+      if (choices.get(i).equals("R")){
+        angle = 0;
+        ycor -= width / 2;
+      }
       //else do nothing (stay straight)
       move();
       turnTick = 10;
@@ -106,8 +118,14 @@ public class Car {
       if (nextRight.canDrive()) choices.add("R"); //go right
 
       int i = int(random(choices.size()));
-      if (choices.get(i).equals("L")) angle = 0;
-      if (choices.get(i).equals("R")) angle = 180;
+      if (choices.get(i).equals("L")){
+        angle = 0;
+        ycor -= width / 2;
+      }
+      if (choices.get(i).equals("R")){
+        angle = 180;
+        ycor -= width / 2;
+      }
       //else do nothing (stay straight)
       move();
       turnTick = 10;

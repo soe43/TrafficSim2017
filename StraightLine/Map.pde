@@ -20,8 +20,8 @@ public class Map {
     for (int r = 0; r < gridR; r++) {
       for (int c = 0; c < gridC; c++) {    
         if (r == 0 && c == 2) { //you're the start road
-          Road rd = new Road(r, c, true, false);
-          spawnable.add(rd);
+          Road rd = new Road(r, c, false, true);
+          killable.add(rd);
           data[r][c] = rd;
         } else if (r == gridR - 1 && c == 2) { //you're the end road
           Road rd = new Road(r, c, false, true);
@@ -42,9 +42,9 @@ public class Map {
       i++;
     }
 
-    Road k1 = new Road(11, 0, false, true);
+    Road k1 = new Road(11, 0, true, false);
     Road k2 = new Road(11, 12, false, true);
-    killable.add(k1);
+    spawnable.add(k1);
     killable.add(k2);
     data[11][0] = k1;
     data[11][12] = k2;
