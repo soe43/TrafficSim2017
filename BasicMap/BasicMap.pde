@@ -11,13 +11,7 @@ void setup() {
 
 
 void draw() {
-//  if(!data.toggleBuild){
-  //  data.drawMap();
-  //}
-  //else{
-    //data.toggleBuild();
-  //}
-//}
+ data.drawMap();  
 }
 
 void keyPressed(){  

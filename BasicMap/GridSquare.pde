@@ -15,7 +15,7 @@ public class GridSquare {
     return colour;
   }
 
-  public boolean getDrivable(){
+  public boolean canDrive(){
     return drivable;
   }
   
