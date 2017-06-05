@@ -9,6 +9,5 @@ public class Road extends GridSquare {
     super(colour);
     drivable = true;
   }
-
   
 }

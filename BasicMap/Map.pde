@@ -1,6 +1,5 @@
 public class Map {
   private GridSquare[][] data;
-  private Intersection[] inters;
   private int maxX;
   private int maxY;
   private boolean toggleBuild;
@@ -25,6 +24,46 @@ public class Map {
   public GridSquare getSquare(int r, int c) {
     return data[r][c];
   }
+
+  public ArrayList<GridSquare> getNeighbors(int r, int c) {
+    ArrayList<GridSquare> moves = new ArrayList<GridSquare>();
+    if (r == 0 && (c != 0 && c != maxY / 50)) {
+      moves.add(data[r+1][c]);
+      moves.add(data[r][c+1]);
+      moves.add(data[r][c-1]);
+    } else if (r == 0 && c == 0) {
+      moves.add(data[r+1][c]);
+      moves.add(data[r][c+1]);
+    } else if (r == 0 && c == maxY / 50) {
+      moves.add(data[r+1][c]);
+      moves.add(data[r][c-1]);
+    } else if (r == maxX / 50 && (c != 0 && c != maxY / 50)) {
+      moves.add(data[r-1][c]);
+      moves.add(data[r][c+1]);
+      moves.add(data[r][c-1]);
+    } else if (r == maxX / 50 && c == 0) {
+      moves.add(data[r-1][c]);
+      moves.add(data[r][c+1]);
+    } else if (r == maxX / 50 && c == maxY / 50) {
+      moves.add(data[r-1][c]);
+      moves.add(data[r][c-1]);
+    } else if (c == 0 && (r != 0 && r != maxX / 50)) {
+      moves.add(data[r+1][c]);
+      moves.add(data[r-1][c]);
+      moves.add(data[r][c+1]);
+    } else if (c == maxY / 50 && (r != maxX / 50 && r != 0)) {
+      moves.add(data[r + 1][c]);
+      moves.add(data[r - 1][c]);
+      moves.add(data[r][c-1]);
+    } else {
+      moves.add(data[r+1][c]);
+      moves.add(data[r-1][c]);
+      moves.add(data[r][c+1]);
+      moves.add(data[r][c-1]);
+    }
+    return moves;
+  }
+
 
   //only gets called once (in the setup of BasicMap)
   public void drawMap() {
@@ -55,8 +94,7 @@ public class Map {
           rect(r * 50, c * 50, 50, 50, 7);
         }
       }
-    }
-    else if (!toggleBuild) {
+    } else if (!toggleBuild) {
       for (int   r = 0; r < data.length; r++) {
         for (int c = 0; c < data[r].length; c++) {
           fill(data[r][c].getColor());
