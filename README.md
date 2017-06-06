@@ -1,6 +1,9 @@
 # TrafficSim2017
 Traffic Simulator Final Project
 
+TrafficSim2017 is a simulation created by William Soe and Ben Weinstein. It is able to create simulations of cars driving on either randomly generated or user-created roads, applying real life physics to create an accurate simulation.
+
+## Features
 Features Added:
 -Basic Map grid system w/ Roads.
 -Can create Roads with mouse clicks.
