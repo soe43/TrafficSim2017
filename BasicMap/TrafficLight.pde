@@ -44,12 +44,10 @@ public class TrafficLight {
 
   public void stop(Car c) {
     if (isStop) {
-      c.setSpeed = 0;
+      c.setSpeed(0);
     } else {
-      c.setSpeed = 10;
+      c.setSpeed(10);
     }
   }
   
-  public void drawMe(){
-    f
 }  
