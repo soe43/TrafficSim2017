@@ -50,4 +50,7 @@ public class TrafficLight {
     }
   }
   
+  public void drawMe(Intersection inters){
+    TrafficTriangle t = new TrafficTriangle(inters.xcor,inters.ycor,90);
+  }
 }  
