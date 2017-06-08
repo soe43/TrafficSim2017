@@ -2,7 +2,10 @@ public class Map {
   private GridSquare[][] data;
   private int maxX;
   private int maxY;
+<<<<<<< HEAD
   private boolean toggleBuild;
+=======
+>>>>>>> ben
 
   //maxX, maxY are the screen dimensions (size(x,y)) 
   public Map(int gridR, int gridC, int maxX, int maxY) {
@@ -16,8 +19,11 @@ public class Map {
         data[r][c] = new GridSquare(130); // set to the normal gray
       }
     }
+<<<<<<< HEAD
 
     toggleBuild = false;
+=======
+>>>>>>> ben
   }
 
   //accessor method
@@ -25,6 +31,7 @@ public class Map {
     return data[r][c];
   }
 
+<<<<<<< HEAD
   public ArrayList<GridSquare> getNeighbors(int r, int c) {
     ArrayList<GridSquare> moves = new ArrayList<GridSquare>();
     if (r == 0 && (c != 0 && c != maxY / 50)) {
@@ -65,6 +72,8 @@ public class Map {
   }
 
 
+=======
+>>>>>>> ben
   //only gets called once (in the setup of BasicMap)
   public void drawMap() {
     for (int r = 0; r < data.length; r++) {
@@ -80,6 +89,7 @@ public class Map {
     //find the grid square
     GridSquare gs = getSquare(int(x / 50), int(y / 50));
     if (gs.getColor() == 130) {
+<<<<<<< HEAD
       data[int(x / 50)][int(y / 50)] = new Road();
     } else if (gs.getColor() == 0) {
       data[int(x / 50)][int(y / 50)] = new GridSquare(130);
@@ -104,3 +114,14 @@ public class Map {
     }
   }
 }
+=======
+      data[int(x / 50)][int(y / 50)] = new Road(); 
+    } else if (gs.getColor() == 0){
+      data[int(x / 50)][int(y / 50)] = new GridSquare(130);
+    }
+  }
+  
+  
+
+} 
+>>>>>>> ben

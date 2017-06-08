@@ -1,13 +1,10 @@
+import java.util.*;
+
 public class GridSquare {
   //NEEDS TO BE NAMED THE BRITISH VERSION 
-<<<<<<< HEAD
-  int colour = 0; //single, 0-256 for now (could change later to trio)
-  int row, col; 
-=======
   private int colour = 0; //single, 0-256 for now (could change later to trio)
   private int row, col;
   private boolean isDrivable = false;
->>>>>>> ben
 
   public GridSquare(int r, int c, int colour) {
     this.colour = colour;
@@ -30,12 +27,24 @@ public class GridSquare {
   public int getCol() {
     return col;
   }
-<<<<<<< HEAD
-=======
 
   //always false;
   public boolean canDrive() {
     return isDrivable;
   }
->>>>>>> ben
+
+  //just so it works:
+  public void addCar(Car c) {
+    System.out.println("Can't add Car to a GridSquare! Needs to be a Road!");
+  }
+
+  //also just so it works:
+  public void removeCar() {
+    //do nothing 
+    return;
+  }
+  
+  public ArrayList<Car> carsHere(){
+    throw new UnsupportedOperationException();
+  }
 }

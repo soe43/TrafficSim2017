@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 public class Intersection extends Road {
   ArrayList<TrafficLight> lights; //Maximum size of 2
   int xcor, ycor;
@@ -30,4 +31,7 @@ public class Intersection extends Road {
   }
   
   
+=======
+public class Intersection extends GridSquare{
+>>>>>>> ben
 }

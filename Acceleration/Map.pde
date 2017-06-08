@@ -8,6 +8,9 @@ public class Map {
   //FOR SPAWNING/KILLING CARS
   private ArrayList<Road> spawnable = new ArrayList<Road>(); //isStart == true
   private ArrayList<Road> killable = new ArrayList<Road>(); //isEnd == true
+  
+  
+  private ArrayList<Road> roadList = new ArrayList<Road>(); 
 
   //maxX, maxY are the screen dimensions (size(x,y)) 
   public Map(int gridR, int gridC, int maxX, int maxY) {
@@ -16,69 +19,55 @@ public class Map {
 
     data = new GridSquare[gridR][gridC];
 
-<<<<<<< HEAD
-=======
     //THIS IS WHERE YOU SWITCH STUFF FOR TESTS!
->>>>>>> ben
     //could add a toggle for 'choose pre-generated map'   
     for (int r = 0; r < gridR; r++) {
       for (int c = 0; c < gridC; c++) {    
         if (r == 0 && c == 2) { //you're the start road
-<<<<<<< HEAD
           Road rd = new Road(r, c, true, false);
           spawnable.add(rd);
-=======
-          Road rd = new Road(r, c, false, true);
-          killable.add(rd);
->>>>>>> ben
+          roadList.add(rd);
           data[r][c] = rd;
         } else if (r == gridR - 1 && c == 2) { //you're the end road
           Road rd = new Road(r, c, false, true);
           killable.add(rd);
+          roadList.add(rd);
           data[r][c] = rd;
         } else if (c == 2) {
-          data[r][c] = new Road(r, c, false, false); //making a horizontal road
+          Road rd = new Road(r, c, false, false); //making a horizontal road
+          roadList.add(rd);
+          data[r][c] = rd;
         } else {
           data[r][c] = new GridSquare(r, c, 130); // set to the normal gray
         }
       }
     }
-
+    /*
     //editing the map further:
-    int i = 0;
-<<<<<<< HEAD
-    while (i < gridC) {
-      data[11][i] = new Road(11, i, false, false);
-      i++;
-    }
-=======
-    while (i < gridC) {   
-      data[11][i] = new Road(11, i, false, false);
-      i++;
-    }
-    
-    
-    //SWITCH THESE FOR TESTS!!!
-    Road k1 = new Road(11, 0, true, false);
-    Road k2 = new Road(11, 12, false, true);
-    spawnable.add(k1);
-    killable.add(k2);
-    data[11][0] = k1;
-    data[11][12] = k2;
->>>>>>> ben
+     int i = 0;
+     while (i < gridC) {   
+     data[11][i] = new Road(11, i, false, false);
+     i++;
+     }
+     
+     
+     //SWITCH THESE FOR TESTS!!!
+     Road k1 = new Road(11, 0, true, false);
+     Road k2 = new Road(11, 12, false, true);
+     spawnable.add(k1);
+     killable.add(k2);
+     data[11][0] = k1;
+     data[11][12] = k2;
+     */
   }
 
 
 
   //called as the update function in the Map class
   public void updateCar(Car c) {
-<<<<<<< HEAD
-    c.move();
-    c.drawMe();
+    
 
 
-=======
->>>>>>> ben
     //changing current, nextUp, nextLeft, nextRight FOR EACH DIFFERENT ORIENTATION
     //draw diagrams for this (will be easier to understand, trust me...
     if (c.getAngle() == 0) { // to the right is front
@@ -101,6 +90,12 @@ public class Map {
       catch(ArrayIndexOutOfBoundsException e) {
         c.setRight(null);
       }
+      try {
+        c.setPrevious(getSquare(int(c.getX() / 50 - 1), int(c.getY() / 50)));
+      }
+      catch(ArrayIndexOutOfBoundsException e){
+        c.setPrevious(null);
+      }
     } else if (c.getAngle() == 90 ) { // upwards is front
       c.setCurrent(getSquare(int(c.getX() / 50), int(c.getY() / 50)));
       try {
@@ -120,6 +115,12 @@ public class Map {
       }
       catch(ArrayIndexOutOfBoundsException e) {
         c.setRight(null);
+      }
+      try {
+        c.setPrevious(getSquare(int(c.getX() / 50), int(c.getY() / 50 + 1)));
+      }
+      catch(ArrayIndexOutOfBoundsException e) {
+        c.setPrevious(null);
       }
     } else if (c.getAngle() == 180) { // to the left is front
       c.setCurrent(getSquare(int(c.getX() / 50), int(c.getY() / 50)));
@@ -141,6 +142,12 @@ public class Map {
       catch(ArrayIndexOutOfBoundsException e) {
         c.setRight(null);
       }
+      try{
+        c.setPrevious(getSquare(int(c.getX() / 50 + 1), int(c.getY() / 50)));
+      }
+      catch(ArrayIndexOutOfBoundsException e) {
+        c.setPrevious(null);
+      }
     } else { // downwards is front
       c.setCurrent(getSquare(int(c.getX() / 50), int(c.getY() / 50)));
       try {
@@ -161,13 +168,35 @@ public class Map {
       catch(ArrayIndexOutOfBoundsException e) {
         c.setRight(null);
       }
+      try{
+        c.setPrevious(getSquare(int(c.getX() / 50), int(c.getY() / 50 - 1)));
+      }
+      catch(ArrayIndexOutOfBoundsException e) {
+        c.setPrevious(null);
+      }
     }
-<<<<<<< HEAD
-=======
+    
+    //adjusting speed (should come first, I think?)
+    //BUT NOT BEFORE SETTING THE STUFF!
+    c.adjustSpeed(c.nextUp().carsHere());
+    
+    
     c.turn();
+
     c.move();
+    
+    GridSquare gs = c.previous();
+    if(gs != null){   
+      gs.removeCar();
+    }
+    
+    c.updateRoadList();
+    
     c.drawMe();
->>>>>>> ben
+    
+    //is this gonna be mad slow?
+    //Solution: create ANOTHER instance variable for the Car, so that it keeps track
+    //of the previous Road, too.
   }
 
   //accessor method
@@ -181,11 +210,7 @@ public class Map {
 
   public ArrayList<Road> getKillable() {
     return killable;
-<<<<<<< HEAD
-  }
-=======
   }    
->>>>>>> ben
 
   public boolean toBeKilled(Car c) {
     GridSquare gs = data[int(c.getX() / 50)][int(c.getY() / 50)];
@@ -201,18 +226,4 @@ public class Map {
       }
     }
   }
-
-
-  /* //NOT BEING USED RIGHT NOW
-   //drawing the map (does that go here or...) 
-   public void updateMap(float x, float y) {
-   //find the grid square
-   GridSquare gs = getSquare(int(x / 50), int(y / 50));
-   if (gs.getColor() == 130) {
-   data[int(x / 50)][int(y / 50)] = new Road(false, false);
-   } else if (gs.getColor() == 0) {
-   data[int(x / 50)][int(y / 50)] = new GridSquare(130);
-   }
-   }
-   */
 } 

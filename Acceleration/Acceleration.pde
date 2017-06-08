@@ -5,11 +5,13 @@
 
 import java.util.*;
 
-ArrayList<Car> cars = new ArrayList<Car>();
+public static ArrayList<Car> cars = new ArrayList<Car>();
 //ArrayList<StopLight> lights = new ArrayList<StopLight>();
 
 Map data;
 int timer;
+
+int carSpeed;
 
 void setup() {
   size(800, 650);
@@ -50,28 +52,26 @@ void draw() {
       //BIDIRECTIONALITY 
       //right now, it's just ((widthRoad / lanesRoad) - widthCar) / 2, fairly simple to calculate.
       //most likely will stick to that formula
-<<<<<<< HEAD
-
-      Car c = new Car(rd.getRow() * 50, rd.getCol() * 50 + adjustment, 0);
-=======
       
       
       //CHANGE HERE FOR TESTS!!!
       
       //horizontal:
-      //Car c = new Car(rd.getRow() * 50, rd.getCol() * 50 + adjustment, 180 or 0);
+      Car c = new Car(rd.getRow() * 50, rd.getCol() * 50 + adjustment, 0, carSpeed);
       
       //vertical:
-      Car c = new Car(rd.getRow() * 50 + adjustment, rd.getCol() * 50, 270);
->>>>>>> ben
+      //Car c = new Car(rd.getRow() * 50 + adjustment, rd.getCol() * 50, 270, carSpeed);
+      carSpeed++;
       cars.add(c);
       c.drawMe();
     }
   }
 }
 
+/*
 void mouseClicked() {
   Car newCar = new Car(mouseX, mouseY, 0);
   newCar.drawMe();
   cars.add(newCar);
 }
+*/

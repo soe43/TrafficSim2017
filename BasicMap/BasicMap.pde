@@ -7,6 +7,7 @@ void setup() {
   //that it's a good size
 
   data.drawMap();
+<<<<<<< HEAD
   
   
  TrafficTriangle a = new TrafficTriangle(80,60,90);
@@ -39,6 +40,14 @@ void keyPressed(){
 }
 
 
+=======
+}
+
+void draw() {
+  data.drawMap();
+}
+
+>>>>>>> ben
 void mouseClicked() {
   data.updateMap(mouseX, mouseY);
 }

@@ -1,4 +1,5 @@
 public class Road extends GridSquare {
+<<<<<<< HEAD
   
   public Road() {
     super(0); //set to black
@@ -9,5 +10,14 @@ public class Road extends GridSquare {
     super(colour);
     drivable = true;
   }
+=======
+  public Road() {
+
+
+    super(0); //set to black
+  }
+
+
+>>>>>>> ben
   
 }
