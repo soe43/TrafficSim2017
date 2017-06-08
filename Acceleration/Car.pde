@@ -78,8 +78,8 @@ public class Car {
     //should be edited in Car. Current is a road, so will work that way.
     Car next = getNextCar(); 
     if (next == null) {
-      //start return to origSpeed
-      speed += (origSpeed - speed) / 250;
+      //return gradually to origSpeed
+      speed += (origSpeed - speed) / 250; //250 is a constant, subject to change
       
       if(speed > origSpeed){
         speed = origSpeed;
@@ -99,8 +99,9 @@ public class Car {
     }
 
     //linear deceleration:
-    //NEEDS TO SLOW DOWN FASTER
-    speed -= 2 * (speed - next.getSpeed()) / dist;
+    //NEEDS TO SLOW DOWN FASTER (that's why I multiplied by 2.0)
+    //this constant may need to change as I tweak the Cars' speeds
+    speed -= 2.0 * (speed - next.getSpeed()) / dist;
 
     //to prevent negative speed:
     if (speed < 0) {
