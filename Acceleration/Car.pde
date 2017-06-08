@@ -4,6 +4,7 @@ public class Car {
   private float xcor;
   private float ycor;
   private float speed; //number of pixels moved per tick
+  private float origSpeed; //keeping track of original speed (max speed)
   private float angle; //orientation of the car (0 to 360 degrees) 
 
   private GridSquare current;
@@ -22,6 +23,7 @@ public class Car {
     xcor = x;
     ycor = y;
     speed = 1;
+    origSpeed = 2.0;
     angle = orientation;
     // Map.updateCar(this);
   }
@@ -32,6 +34,7 @@ public class Car {
     xcor = x;
     ycor = y;
     this.speed = speed % 2.0 + 1.0; //either 1.0 or 2.0 
+    origSpeed = 2.0;
     angle = orientation;
   }
 
@@ -75,6 +78,13 @@ public class Car {
     //should be edited in Car. Current is a road, so will work that way.
     Car next = getNextCar(); 
     if (next == null) {
+      //start return to origSpeed
+      speed += (origSpeed - speed) / 250;
+      
+      if(speed > origSpeed){
+        speed = origSpeed;
+      }
+      
       return;
     }
     //otherwise:
@@ -89,7 +99,8 @@ public class Car {
     }
 
     //linear deceleration:
-    speed -= (speed - next.getSpeed()) / dist;
+    //NEEDS TO SLOW DOWN FASTER
+    speed -= 2 * (speed - next.getSpeed()) / dist;
 
     //to prevent negative speed:
     if (speed < 0) {
