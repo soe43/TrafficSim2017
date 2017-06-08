@@ -43,15 +43,18 @@ public class TrafficSimulator {
         //BIDIRECTIONALITY 
         //right now, it's just ((widthRoad / lanesRoad) - widthCar) / 2, fairly simple to calculate.
         //most likely will stick to that formula
+        
+        Car c;
+        if (rd.getHeading() == 0) {       
+          c = new Car(rd.getRow() * 50, rd.getCol() * 50 + adjustment, 0, carSpeed);
+        } else if (rd.getHeading() == 180) {
+          c = new Car(rd.getRow() * 50, rd.getCol() * 50 + adjustment, 180, carSpeed);
+        } else if (rd.getHeading() == 90) {
+          c = new Car(rd.getRow() * 50 + adjustment, rd.getCol() * 50, 90, carSpeed);
+        } else {
+          c = new Car(rd.getRow() * 50 + adjustment, rd.getCol() * 50, 270, carSpeed);
+        }
 
-
-        //CHANGE HERE FOR TESTS!!!
-
-        //horizontal:
-        Car c = new Car(rd.getRow() * 50, rd.getCol() * 50 + adjustment, 0, carSpeed);
-
-        //vertical:
-        //Car c = new Car(rd.getRow() * 50 + adjustment, rd.getCol() * 50, 270, carSpeed);
         carSpeed++;
         cars.add(c);
         c.drawMe();

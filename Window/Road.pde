@@ -4,13 +4,14 @@ public class Road extends GridSquare {
   private boolean isStart; //Cars spawn here
   private boolean isEnd; //Cars get killed here
   private boolean isDrivable = true;
-  private ArrayList<Car> carsHere;
+  private ArrayList<Car> carsHere = new ArrayList<Car>();
+  private int heading;
 
-  public Road(int r, int c, boolean start, boolean end) {
+  public Road(int r, int c, int angle, boolean start, boolean end) {
     super(r, c, 0); //set to black
     isStart = start;
     isEnd = end;
-    carsHere = new ArrayList<Car>();
+    heading = angle;
   }
 
   public boolean isStart() {
@@ -28,6 +29,15 @@ public class Road extends GridSquare {
 
   public ArrayList<Car> carsHere() {
     return carsHere;
+  }
+
+  public int getHeading() {
+    return heading;
+  }
+
+  //mutators:
+  public void setHeading(int h) {
+    heading = h % 360;
   }
 
   //mutating the ArrayList:

@@ -1,3 +1,9 @@
+//up next: 
+//road directionality
+//seeing how the acceleration works when turning is in the picture
+//^^ done by building a bigger test model with more roads and turns and stuff
+//further down the road (ha! pun): implementing intersections
+
 TrafficSimulator sim;
 
 void setup() {
