@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class GridSquare {
   //NEEDS TO BE NAMED THE BRITISH VERSION 
   private int colour = 0; //single, 0-256 for now (could change later to trio)
@@ -29,5 +31,30 @@ public class GridSquare {
   //always false;
   public boolean canDrive() {
     return isDrivable;
+  }
+
+  
+  
+  //IN ORDER TO MAKE FUNCTIONS IN ROAD CLASS WORK:
+  
+  public void addCar(Car c) {
+    System.out.println("Can't add Car to a GridSquare! Needs to be a Road!");
+  }
+
+  public void removeCar() {
+    //do nothing 
+    return;
+  }
+  
+  public ArrayList<Car> carsHere(){
+    throw new UnsupportedOperationException();
+  }
+  
+  public int getHeading(){
+    throw new UnsupportedOperationException();
+  }
+  
+  public void setHeading(int h){
+    throw new UnsupportedOperationException();
   }
 }

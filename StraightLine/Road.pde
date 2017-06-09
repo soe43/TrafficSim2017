@@ -1,7 +1,8 @@
 public class Road extends GridSquare {
   private boolean isStart; //Cars spawn here
   private boolean isEnd; //Cars get killed here
-
+  private boolean isDrivable = true;
+  
   public Road(int r, int c, boolean start, boolean end) {
     super(r, c, 0); //set to black
     isStart = start;
@@ -14,5 +15,10 @@ public class Road extends GridSquare {
 
   public boolean isEnd() {
     return isEnd;
+  }
+  
+  //always true
+  public boolean canDrive() {
+    return isDrivable;
   }
 }

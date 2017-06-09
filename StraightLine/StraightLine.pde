@@ -1,6 +1,12 @@
+//to be added next: 
+//turning 
+//implementing the stoplights
+//intersections
+
 import java.util.*;
 
 ArrayList<Car> cars = new ArrayList<Car>();
+//ArrayList<StopLight> lights = new ArrayList<StopLight>();
 
 Map data;
 int timer;
@@ -24,8 +30,7 @@ void draw() {
   noStroke(); //so there's no outline on the cars
   for (int i = 0; i < cars.size(); i++) {
     Car c = cars.get(i);
-    c.move();
-    c.drawMe();
+    data.updateCar(c);
 
     //NEED TO CHECK IF AT A SPOT IN KILLABLE, THEN KILL
     if (data.toBeKilled(c)) { 
@@ -43,10 +48,17 @@ void draw() {
       int adjustment = (50 - 15) / 2; //to center the car within the box
       //THIS WILL NEED TO CHANGE AS WE MESS WITH LANES // CARS OF DIFFERENT SIZES // ROAD
       //BIDIRECTIONALITY 
-      //right now, it's just (widthRoad - widthCar) / 2, fairly simple to calculate.
+      //right now, it's just ((widthRoad / lanesRoad) - widthCar) / 2, fairly simple to calculate.
       //most likely will stick to that formula
-
-      Car c = new Car(rd.getRow() * 50, rd.getCol() * 50 + adjustment, 0);
+      
+      
+      //CHANGE HERE FOR TESTS!!!
+      
+      //horizontal:
+      //Car c = new Car(rd.getRow() * 50, rd.getCol() * 50 + adjustment, 180 or 0);
+      
+      //vertical:
+      Car c = new Car(rd.getRow() * 50 + adjustment, rd.getCol() * 50, 270);
       cars.add(c);
       c.drawMe();
     }
