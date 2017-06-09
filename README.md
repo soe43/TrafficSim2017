@@ -3,20 +3,30 @@ Traffic Simulator Final Project
 
 TrafficSim2017 is a simulation created by William Soe and Ben Weinstein. It is able to create simulations of cars driving on either randomly generated or user-created roads, applying real life physics to create an accurate simulation.
 
-## Features
-Features Added:
--Basic Map grid system w/ Roads.
--Can create Roads with mouse clicks.
--Cars can move and turn
--One-lane Roads
+## Features  
+### Features Added:  
+-Basic Map grid system w/ Roads.  
+-Can create Roads with mouse clicks.  
+-Cars can move and turn.  
+-One-lane Roads.  
+
+### Features to be Implemented:
+-Slowing down when near cars.  
+-StopLights.  
+-Intersection functionality and features.  
+-Two-lane Roads.  
+-User interface // <b> Menu system </b> (using ControlP5) (see more below).  
+
+#### Menu Features to be Implemented:  
+-Slider for controlling the number of Cars (or frequency of Car spawns).  
+-Button to generate (random) Map (if not random: switch//toggle between a couple of preset Maps).  
+-Clear all Cars button.  
+-Slider to adjust the rate at which TrafficLights switch.  
+-Build mode toggle.  
 
 
-Features to be Implemented:
--Slowing down when near cars
--StopLights
--Intersection functionality and features
--Two-lane Roads
--User interface // Menu system (using ControlP5)
+
+
 
 
 
@@ -32,7 +42,7 @@ STAGE I: Basics (estimated completion date: 6/3/17)
 Preset map with grid system.
 Cars can move around the map in relation to one another.
 Turning will probably be basic, though.
-Might be orthogonal rather than radial turns 
+Orthogonal rather than radial turns 
 Include a debugging mode like the one on the model site.
 Create and understand the physics engine/model behind their movement. 
 Research into how to improve their movement/turns (do they follow a certain curve, etc.)
