@@ -11,6 +11,7 @@ public class Car {
   private GridSquare nextUp;
   private GridSquare nextLeft;
   private GridSquare nextRight;
+  private GridSquare choice;
 
 
   public Car(float x, float y, float orientation) { 
@@ -35,19 +36,22 @@ public class Car {
     }
   }
 
-  public void turn(int LightOrient) {
+  public void turn(TrafficLight light) {
     //added on the buffer to get rid of the double turning bug 
-    if (turnTick > 0) {
+    if (light.timeRemain() > 0) {
       return;
-    }
-    if ((angle == 0 && xcor % 50 == 25) || (angle == 180 && xcor % 50 == 25)) {
-      angle = LightOrient;
-      xcor -= width / 2;
-    } else if ((angle == 90 && ycor % 50 == 25) || (angle == 270 && ycor % 50 == 25)) {
-      angle = LightOrient;
-      ycor -= width / 2;
+    } else if (light.timeRemain() == 0) {
+      if ((light.getAngle() == 0 && xcor % 50 == 25) || (angle == 180 && xcor % 50 == 25)) {
+        angle = light.getAngle();
+        xcor -= width / 2;
+      } else if ((angle == 90 && ycor % 50 == 25) || (angle == 270 && ycor % 50 == 25)) {
+        angle = light.getAngle();
+        ycor -= width / 2;
+      }
     }
   }
+
+
 
   //accessors: 
   public float getX() {

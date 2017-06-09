@@ -15,7 +15,7 @@ public class Intersection extends Road {
         if(available.get(k) instanceof Road) {
           startOrient = available.get(k);
         }
-        lights.add(new TrafficLight(2, 90)); //Have to figure out how to find starting initialization
+        lights.add(new TrafficLight(2, 90)); //Have to figure out how to find starting angle initialization
       }
     } else if (available.size() == 4) {
       GridSquare startOrient;
@@ -24,9 +24,13 @@ public class Intersection extends Road {
         if (available.get(k) instanceof Road) {
           startOrient = available.get(k);
         }
-        lights.add(new TrafficLight(3, 90)); //Have to figure out how to find starting initialization
+        lights.add(new TrafficLight(3, 90)); //Have to figure out how to find starting angle initialization
       }
     }
+  }
+  
+  public ArrayList<TrafficLight> getLights(){
+    return lights;
   }
   
   
