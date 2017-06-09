@@ -25,7 +25,7 @@ public class Map {
     
     horizontalRoad(4, gridR, 0);
     horizontalRoad(8, gridR, 180);
-    verticalRoad(7, gridC, 270);
+    verticalRoad(7, gridC, 90);
     verticalRoad(4, gridC, 270);
   }
 
