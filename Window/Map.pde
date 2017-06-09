@@ -23,9 +23,9 @@ public class Map {
       }
     }
     
-    horizontalRoad(2, gridR, 0);
-    horizontalRoad(4, gridR, 180);
-    verticalRoad(7, gridC, 90);
+    horizontalRoad(4, gridR, 0);
+    horizontalRoad(8, gridR, 180);
+    verticalRoad(7, gridC, 270);
     verticalRoad(4, gridC, 270);
   }
 
