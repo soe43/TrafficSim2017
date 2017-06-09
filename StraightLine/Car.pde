@@ -11,7 +11,10 @@ public class Car {
   private GridSquare nextLeft;
   private GridSquare nextRight;
 
+<<<<<<< HEAD
+=======
   private int turnTick = 10;
+>>>>>>> ben
 
   public Car(float x, float y, float orientation) { 
     //what should be set here?
@@ -43,6 +46,16 @@ public class Car {
     if (angle == 0) { //going to the right
       xcor += speed;
     } else if (angle == 90) { //going up 
+<<<<<<< HEAD
+      ycor += speed;
+    } else if (angle == 180) { //going to the left
+      xcor -= speed;
+    } else { //going down (angle == 270)
+      ycor -= speed;
+    }
+  }
+
+=======
       ycor -= speed;
     } else if (angle == 180) { //going to the left
       xcor -= speed;
@@ -133,6 +146,7 @@ public class Car {
   }
 
 
+>>>>>>> ben
 
 
   //accessors: 

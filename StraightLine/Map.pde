@@ -16,13 +16,21 @@ public class Map {
 
     data = new GridSquare[gridR][gridC];
 
+<<<<<<< HEAD
+=======
     //THIS IS WHERE YOU SWITCH STUFF FOR TESTS!
+>>>>>>> ben
     //could add a toggle for 'choose pre-generated map'   
     for (int r = 0; r < gridR; r++) {
       for (int c = 0; c < gridC; c++) {    
         if (r == 0 && c == 2) { //you're the start road
+<<<<<<< HEAD
+          Road rd = new Road(r, c, true, false);
+          spawnable.add(rd);
+=======
           Road rd = new Road(r, c, false, true);
           killable.add(rd);
+>>>>>>> ben
           data[r][c] = rd;
         } else if (r == gridR - 1 && c == 2) { //you're the end road
           Road rd = new Road(r, c, false, true);
@@ -38,6 +46,12 @@ public class Map {
 
     //editing the map further:
     int i = 0;
+<<<<<<< HEAD
+    while (i < gridC) {
+      data[11][i] = new Road(11, i, false, false);
+      i++;
+    }
+=======
     while (i < gridC) {   
       data[11][i] = new Road(11, i, false, false);
       i++;
@@ -51,12 +65,20 @@ public class Map {
     killable.add(k2);
     data[11][0] = k1;
     data[11][12] = k2;
+>>>>>>> ben
   }
 
 
 
   //called as the update function in the Map class
   public void updateCar(Car c) {
+<<<<<<< HEAD
+    c.move();
+    c.drawMe();
+
+
+=======
+>>>>>>> ben
     //changing current, nextUp, nextLeft, nextRight FOR EACH DIFFERENT ORIENTATION
     //draw diagrams for this (will be easier to understand, trust me...
     if (c.getAngle() == 0) { // to the right is front
@@ -140,9 +162,12 @@ public class Map {
         c.setRight(null);
       }
     }
+<<<<<<< HEAD
+=======
     c.turn();
     c.move();
     c.drawMe();
+>>>>>>> ben
   }
 
   //accessor method
@@ -156,7 +181,11 @@ public class Map {
 
   public ArrayList<Road> getKillable() {
     return killable;
+<<<<<<< HEAD
+  }
+=======
   }    
+>>>>>>> ben
 
   public boolean toBeKilled(Car c) {
     GridSquare gs = data[int(c.getX() / 50)][int(c.getY() / 50)];
