@@ -15,7 +15,10 @@ void setup() {
   gui();
 }
 
+int tickFrequency = 120; //number of ticks for a round of Cars to spawn
+
 void draw() {
+  sim.updateTickFrequency(tickFrequency);
   sim.run();
 }
 
@@ -23,13 +26,13 @@ void gui() {
   cp5 = new ControlP5(this);
 
   // group number 1, 
-  Group g1 = cp5.addGroup("Pause")
+  Group g1 = cp5.addGroup("controls")
     .setBackgroundColor(color(0, 64))
     .setBackgroundHeight(150);
 
   accordion = cp5.addAccordion("acc")
-    .setPosition(600, 25)
-    .setWidth(150)
+    .setPosition(610, 10)
+    .setWidth(180)
     .addItem(g1);
 
   cp5.addButton("pause")
@@ -41,6 +44,13 @@ void gui() {
     .setPosition(70, 20)
     .setSize(50, 30)
     .moveTo(g1);
+    
+  cp5.addSlider("tickFrequency")
+    .setPosition(10, 60)
+    .setSize(100, 30)
+    .setRange(30, 200)
+    .moveTo(g1);
+    
 
   //multiple can be open at the same time
   accordion.setCollapseMode(Accordion.MULTI);

@@ -5,7 +5,8 @@ public class TrafficSimulator {
   //ArrayList<StopLight> lights = new ArrayList<StopLight>();
 
   private Map data;
-  private int timer = 120;
+  private float tickFrequency = 120;
+  private float timer = tickFrequency;
   private boolean isPaused = false;
   private int carSpeed;
 
@@ -36,8 +37,8 @@ public class TrafficSimulator {
 
     timer--; 
 
-    if (timer == 0) {
-      timer = 120; 
+    if (timer <= 0) {
+      timer = tickFrequency; 
       ArrayList<Road> rdAry= data.getSpawnable();
       for (Road rd : rdAry) {
         int adjustment = (50 - 15) / 2; //to center the car within the box
@@ -69,16 +70,12 @@ public class TrafficSimulator {
   public void pause() {
     isPaused = !isPaused;
   }
-  
+
   public void clear() {
     cars = new ArrayList<Car>();
   }
 
-  /*
-void mouseClicked() {
-   Car newCar = new Car(mouseX, mouseY, 0);
-   newCar.drawMe();
-   cars.add(newCar);
-   }
-   */
+  public void updateTickFrequency(float t) {
+    tickFrequency = t;
+  }
 }   
