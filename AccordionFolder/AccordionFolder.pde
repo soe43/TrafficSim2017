@@ -39,18 +39,22 @@ void gui() {
     .setPosition(10, 20)
     .setSize(50, 30)
     .moveTo(g1);
-  
+
   cp5.addButton("clear")
     .setPosition(70, 20)
     .setSize(50, 30)
     .moveTo(g1);
-    
+
   cp5.addSlider("tickFrequency")
     .setPosition(10, 60)
     .setSize(100, 30)
     .setRange(30, 200)
     .moveTo(g1);
-    
+
+  cp5.addButton("mapToggle")
+    .setPosition(40, 100)
+    .setSize(60, 30)
+    .moveTo(g1);
 
   //multiple can be open at the same time
   accordion.setCollapseMode(Accordion.MULTI);
@@ -64,4 +68,8 @@ public void pause() {
 
 public void clear() {
   sim.clear();
+}
+
+public void mapToggle() {
+  sim.incMapToggle();
 }

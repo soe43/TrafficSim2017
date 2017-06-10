@@ -9,9 +9,8 @@ public class Map {
   private ArrayList<Road> spawnable = new ArrayList<Road>(); //isStart == true
   private ArrayList<Road> killable = new ArrayList<Road>(); //isEnd == true
 
-
   //maxX, maxY are the screen dimensions (size(x,y)) 
-  public Map(int gridR, int gridC, int maxX, int maxY) {
+  public Map(int gridR, int gridC, int maxX, int maxY, int mapToggle) {
     this.maxX = maxX;
     this.maxY = maxY;
 
@@ -23,10 +22,35 @@ public class Map {
       }
     }
 
-    horizontalRoad(4, gridR, 0);
-    horizontalRoad(8, gridR, 180);
-    verticalRoad(7, gridC, 90);
-    verticalRoad(4, gridC, 270);
+    //SETTING UP THE MAP'S ROADS:
+    if(mapToggle == 0){ //super basic 
+      horizontalRoad(4, gridR, 0);
+      horizontalRoad(8, gridR, 180);
+      verticalRoad(10, gridC, 90);
+      verticalRoad(5, gridC, 270);
+    }
+    if(mapToggle == 1){ //medium level 
+      horizontalRoad(2, gridR, 0);
+      horizontalRoad(6, gridR, 180);
+      horizontalRoad(10, gridR, 0);
+      verticalRoad(2, gridC, 90);
+      verticalRoad(6, gridC, 270);
+      verticalRoad(9, gridC, 90);
+      verticalRoad(13, gridC, 270);    
+    }
+    if(mapToggle == 2){ //complex 
+      horizontalRoad(2, gridR, 0);
+      horizontalRoad(4, gridR, 180);
+      horizontalRoad(6, gridR, 180);
+      horizontalRoad(8, gridR, 0);
+      horizontalRoad(10, gridR, 0);
+      verticalRoad(2, gridC, 90);
+      verticalRoad(4, gridC, 270);
+      verticalRoad(6, gridC, 270);
+      verticalRoad(9, gridC, 90);
+      verticalRoad(11, gridC, 90);
+      verticalRoad(13, gridC, 270);    
+    }
   }
 
 
@@ -268,4 +292,6 @@ public class Map {
       }
     }
   }
+  
+  
 }

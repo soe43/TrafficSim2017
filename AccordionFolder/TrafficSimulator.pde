@@ -8,14 +8,23 @@ public class TrafficSimulator {
   private float tickFrequency = 120;
   private float timer = tickFrequency;
   private boolean isPaused = false;
+  private boolean hasMapToggleChanged = false;
+  private int mapToggle = 0;
   private int carSpeed;
 
   public TrafficSimulator() {
-    data = new Map(800/50, 650/50, 800, 650);
+    data = new Map(800/50, 650/50, 800, 650, 0);
     data.drawMap();
   }
 
   void run() {
+    if (hasMapToggleChanged == true) {
+      clear();
+      data = new Map(800/50, 650/50, 800, 650, mapToggle);
+      data.drawMap();
+      hasMapToggleChanged = false;
+    }
+    
     if (isPaused) return;
 
     background(12, 83, 124);
@@ -77,5 +86,11 @@ public class TrafficSimulator {
 
   public void updateTickFrequency(float t) {
     tickFrequency = t;
+  }
+  
+  //will need to change the remainder (right now, 3) if number of pre-set maps changes
+  public void incMapToggle(){
+    mapToggle = (mapToggle + 1) % 3;
+    hasMapToggleChanged = true;
   }
 }   
