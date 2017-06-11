@@ -41,10 +41,34 @@ public class Map {
       horizontalRoad(2, gridR, 0);
       horizontalRoad(6, gridR, 180);
       horizontalRoad(10, gridR, 0);
+      data[1][2] = new Road(2, 4, 0, false, false, true);
+      data[5][2] = new Road(2, 4, 0, false, false, true);
+      data[8][2] = new Road(2, 4, 0, false, false, true);
+      data[12][2] = new Road(2, 4, 0, false, false, true);
+      data[3][6] = new Road(2, 4, 0, false, false, true);
+      data[7][6] = new Road(2, 4, 0, false, false, true);
+      data[10][6] = new Road(2, 4, 0, false, false, true);
+      data[14][6] = new Road(2, 4, 0, false, false, true);
+      data[1][10] = new Road(2, 4, 0, false, false, true);
+      data[5][10] = new Road(2, 4, 0, false, false, true);
+      data[8][10] = new Road(2, 4, 0, false, false, true);
+      data[12][10] = new Road(2, 4, 0, false, false, true);
       verticalRoad(2, gridC, 90);
       verticalRoad(6, gridC, 270);
       verticalRoad(9, gridC, 90);
       verticalRoad(13, gridC, 270);
+      data[2][3] = new Road(2, 4, 0, false, false, true);
+      data[9][3] = new Road(2, 4, 0, false, false, true);
+      data[2][7] = new Road(2, 4, 0, false, false, true);
+      data[9][7] = new Road(2, 4, 0, false, false, true);
+      data[2][11] = new Road(2, 4, 0, false, false, true);
+      data[9][11] = new Road(2, 4, 0, false, false, true);
+      data[6][1] = new Road(2, 4, 0, false, false, true);
+      data[13][1] = new Road(2, 4, 0, false, false, true);
+      data[6][5] = new Road(2, 4, 0, false, false, true);
+      data[13][5] = new Road(2, 4, 0, false, false, true);
+      data[6][9] = new Road(2, 4, 0, false, false, true);
+      data[13][9] = new Road(2, 4, 0, false, false, true);
     }
     if (mapToggle == 2) { //complex 
       horizontalRoad(2, gridR, 0);
