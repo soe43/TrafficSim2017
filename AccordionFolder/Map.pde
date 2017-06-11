@@ -22,13 +22,20 @@ public class Map {
       }
     }
 
-    //SETTING UP THE MAP'S ROADS:
+    //SETTING UP THE MA  P'S ROADS:
     if (mapToggle == 0) { //super basic 
       horizontalRoad(4, gridR, 0);
       horizontalRoad(8, gridR, 180);
-      data[8][4] = new Road(2, 4, 0, false, false, true);
+      data[9][4] = new Road(2, 4, 0, false, false, true);
+      data[4][4] = new Road(2, 4, 0, false, false, true);
+      data[6][8] = new Road(2, 4, 0, false, false, true);
+      data[11][8] = new Road(2, 4, 0, false, false, true);     
       verticalRoad(10, gridC, 90);
       verticalRoad(5, gridC, 270);
+      data[5][3] = new Road(2, 4, 0, false, false, true);
+      data[5][7] = new Road(2, 4, 0, false, false, true);
+      data[10][5] = new Road(2, 4, 0, false, false, true);
+      data[10][9] = new Road(2, 4, 0, false, false, true);
     }
     if (mapToggle == 1) { //medium level 
       horizontalRoad(2, gridR, 0);

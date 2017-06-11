@@ -221,9 +221,9 @@ public class Car {
 
     ArrayList<String> choices = new ArrayList<String>(); 
     if (angle == 0 && Math.abs(xcor % 50 - 25) <= 1) {
-      if (nextUp.canDrive() && nextUp.getHeading() == 0) choices.add("S"); //stay straight
-      if (nextLeft.canDrive() && nextLeft.getHeading() == 90) choices.add("L"); //go left
-      if (nextRight.canDrive() && nextRight.getHeading() == 270) choices.add("R"); //go right
+      if (nextUp.canDrive() && nextUp.getHeading() == 0 && !nextUp.hasStopSign()) choices.add("S"); //stay straight
+      if (nextLeft.canDrive() && nextLeft.getHeading() == 90 && !nextLeft.hasStopSign()) choices.add("L"); //go left
+      if (nextRight.canDrive() && nextRight.getHeading() == 270 && !nextRight.hasStopSign()) choices.add("R"); //go right
 
       if (choices.size() == 0) return;
 
@@ -242,9 +242,9 @@ public class Car {
       move(); 
       turnTick = 10;
     } else if (angle == 180 && Math.abs(xcor % 50 - 25) <= 1) {
-      if (nextUp.canDrive() && nextUp.getHeading() == 180) choices.add("S"); //stay straight
-      if (nextLeft.canDrive() && nextLeft.getHeading() == 270) choices.add("L"); //go left
-      if (nextRight.canDrive() && nextRight.getHeading() == 90) choices.add("R"); //go right
+      if (nextUp.canDrive() && nextUp.getHeading() == 180 && !nextUp.hasStopSign()) choices.add("S"); //stay straight
+      if (nextLeft.canDrive() && nextLeft.getHeading() == 270 && !nextLeft.hasStopSign()) choices.add("L"); //go left
+      if (nextRight.canDrive() && nextRight.getHeading() == 90 && !nextRight.hasStopSign()) choices.add("R"); //go right
 
       if (choices.size() == 0) return;
 
@@ -263,9 +263,9 @@ public class Car {
       move(); 
       turnTick = 10;
     } else if (angle == 90 && Math.abs(ycor % 50 - 25) <= 1) {
-      if (nextUp.canDrive() && nextUp.getHeading() == 90) choices.add("S"); //stay straight
-      if (nextLeft.canDrive() && nextLeft.getHeading() == 180) choices.add("L"); //go left
-      if (nextRight.canDrive() && nextRight.getHeading() == 0) choices.add("R"); //go right
+      if (nextUp.canDrive() && nextUp.getHeading() == 90 && !nextUp.hasStopSign()) choices.add("S"); //stay straight
+      if (nextLeft.canDrive() && nextLeft.getHeading() == 180 && !nextLeft.hasStopSign()) choices.add("L"); //go left
+      if (nextRight.canDrive() && nextRight.getHeading() == 0 && !nextRight.hasStopSign()) choices.add("R"); //go right
 
       if (choices.size() == 0) return;
 
@@ -284,9 +284,9 @@ public class Car {
       move(); 
       turnTick = 10;
     } else if (angle == 270 && Math.abs(ycor % 50 - 25) <= 1) {
-      if (nextUp.canDrive() && nextUp.getHeading() == 270) choices.add("S"); //stay straight
-      if (nextLeft.canDrive() && nextLeft.getHeading() == 0) choices.add("L"); //go left
-      if (nextRight.canDrive() && nextRight.getHeading() == 180) choices.add("R"); //go right
+      if (nextUp.canDrive() && nextUp.getHeading() == 270 && !nextUp.hasStopSign()) choices.add("S"); //stay straight
+      if (nextLeft.canDrive() && nextLeft.getHeading() == 0 && !nextLeft.hasStopSign()) choices.add("L"); //go left
+      if (nextRight.canDrive() && nextRight.getHeading() == 180 && !nextRight.hasStopSign()) choices.add("R"); //go right
 
       if (choices.size() == 0) return;
 
