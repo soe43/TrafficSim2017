@@ -5,7 +5,8 @@ public class Road extends GridSquare {
   private boolean isEnd; //Cars get killed here
   private boolean isDrivable = true;
   private ArrayList<Car> carsHere = new ArrayList<Car>();
-  private ArrayList<TrafficLight> lights = new ArrayList<TrafficLight>();
+  //private ArrayList<TrafficLight> lights = new ArrayList<TrafficLight>();
+  private boolean stop;
   private ArrayList<String> neighbors = new ArrayList<String>();
   private int heading;
 
@@ -23,12 +24,13 @@ public class Road extends GridSquare {
   public boolean isEnd() {
     return isEnd;
   }
-
+  
+/* Will implement later
   public void addLights() {
     if (neighbors.size() <= 2) {
       return;
     } else if (neighbors.size() == 3) {
-      //checks to see if road is a straight one
+      //Three-pronged intersection
       if (neighbors.contains("N") && neighbors.contains("S") && neighbors.contains("W")){
         
       } else if (neighbors.contains("N") && neighbors.contains("S") && neighbors.contains("E")) {
@@ -45,6 +47,8 @@ public class Road extends GridSquare {
       }
     }
   }
+  */
+  
 
   //always true
   public boolean canDrive() {
