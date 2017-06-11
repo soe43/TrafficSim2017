@@ -148,13 +148,6 @@ public class Car {
     current.addCar(this);
   }
 
-
-
-
-
-
-
-
   //turn the car!
   public void turn() {
     //added on the buffer to get rid of the double turning bug 

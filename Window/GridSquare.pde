@@ -27,6 +27,11 @@ public class GridSquare {
   public int getCol() {
     return col;
   }
+  
+  //adding neighbors to each road
+  public void addNeighbor(String s) {
+    neighbors.add(s);
+  }
 
   //always false;
   public boolean canDrive() {

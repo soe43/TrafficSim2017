@@ -5,13 +5,16 @@ public class Road extends GridSquare {
   private boolean isEnd; //Cars get killed here
   private boolean isDrivable = true;
   private ArrayList<Car> carsHere = new ArrayList<Car>();
+  private ArrayList<TrafficLight> lights = new ArrayList<TrafficLight>();
+  private ArrayList<String> neighbors = new ArrayList<String>();
   private int heading;
 
-  public Road(int r, int c, int angle, boolean start, boolean end) {
+  public Road(int r, int c, int angle, boolean start, boolean end/*, ArrayList<String> found*/) {
     super(r, c, 0); //set to black
     isStart = start;
     isEnd = end;
-    heading = angle;
+    heading = angle % 360;
+    //neighbors = found;
   }
 
   public boolean isStart() {
@@ -20,6 +23,11 @@ public class Road extends GridSquare {
 
   public boolean isEnd() {
     return isEnd;
+  }
+
+//adding neighbors to each road
+  public void addNeighbor(String s) {
+    neighbors.add(s);
   }
 
   //always true
