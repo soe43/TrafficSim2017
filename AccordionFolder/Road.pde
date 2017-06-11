@@ -5,8 +5,6 @@ public class Road extends GridSquare {
   private boolean isEnd; //Cars get killed here
   private boolean isDrivable = true;
   private ArrayList<Car> carsHere = new ArrayList<Car>();
-  //private ArrayList<TrafficLight> lights = new ArrayList<TrafficLight>();
-  private ArrayList<String> neighbors = new ArrayList<String>();
   private int heading;
 
   //for stopsign: 
@@ -20,18 +18,20 @@ public class Road extends GridSquare {
     super(r, c, 0); //set to black
     isStart = start;
     isEnd = end;
-    heading = angle % 360;
-  }
-  
-  public Road(int r, int c, int angle, boolean stop){
-    super(r,c,0);
-    isStart = false;
-    isEnd = false;
-    heading = angle % 360;
-    stopSignPotential = stop;
-    stopSign = !stop;
+    heading = angle;
   }
 
+  //for StopSigns: 'stop' always == true
+  public Road(int r, int c, int angle, boolean start, boolean end, boolean stop) {
+    super(r, c, 0); //set to black
+    isStart = start;
+    isEnd = end;
+    heading = angle;
+    stopSignPotential = stop;
+    stopSign = stop;
+  }
+
+  //accessors:
   public boolean isStart() {
     return isStart;
   }
@@ -39,31 +39,6 @@ public class Road extends GridSquare {
   public boolean isEnd() {
     return isEnd;
   }
-
-  /* Will implement later
-   public void addLights() {
-   if (neighbors.size() <= 2) {
-   return;
-   } else if (neighbors.size() == 3) {
-   //Three-pronged intersection
-   if (neighbors.contains("N") && neighbors.contains("S") && neighbors.contains("W")){
-   
-   } else if (neighbors.contains("N") && neighbors.contains("S") && neighbors.contains("E")) {
-   
-   }
-   else if (neighbors.contains("N") && neighbors.contains("W") && neighbors.contains("E")) {
-   
-   }
-   else if (neighbors.contains("N") && neighbors.contains("S") && neighbors.contains("W")) {
-   
-   }
-   else if (neighbors.contains("N") && neighbors.contains("S") && neighbors.contains("W")) {
-   
-   }
-   }
-   }
-   */
-
 
   //always true
   public boolean canDrive() {
@@ -76,6 +51,18 @@ public class Road extends GridSquare {
 
   public int getHeading() {
     return heading;
+  }
+
+  public boolean hasStopSign() {
+    return stopSign;
+  }
+
+  public int stopTimer() {
+    return stopTimer;
+  }
+
+  public boolean hasStopSignPot() {
+    return stopSignPotential;
   }
 
   //mutators:
@@ -111,16 +98,13 @@ public class Road extends GridSquare {
       }
     }
   }
-  
-  public void setStopPotential(){
-    stopSignPotential = !stopSignPotential;
-  }
-  
-  public void setStopTimer(int t){
+
+  public void setStopTimer(int t) {
     origStopTimer = t;
     stopTimer = t;
   }
 
+  //THIS OCCURS IN DRAWMAP() FUNCTION OF MAP
   public boolean updateStopSign() {
     if (!stopSignPotential) return false;
 

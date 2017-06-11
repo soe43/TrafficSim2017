@@ -5,7 +5,6 @@ public class GridSquare {
   private int colour = 0; //single, 0-256 for now (could change later to trio)
   private int row, col;
   private boolean isDrivable = false;
-  private ArrayList<String> neighbors = new ArrayList<String>();
 
   public GridSquare(int r, int c, int colour) {
     this.colour = colour;
@@ -27,15 +26,6 @@ public class GridSquare {
 
   public int getCol() {
     return col;
-  }
-
-  //adding neighbors to each road
-  public void addNeighbor(String s) {
-    neighbors.add(s);
-  }  
-
-  public ArrayList<String> getNeighbors() {
-    return neighbors;
   }
 
   //always false;
@@ -66,5 +56,13 @@ public class GridSquare {
 
   public void setHeading(int h) {
     throw new UnsupportedOperationException();
+  }
+
+  public boolean hasStopSign() {
+    return false;
+  }
+
+  public boolean updateStopSign() {
+    return false;
   }
 }
