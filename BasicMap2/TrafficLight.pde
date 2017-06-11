@@ -1,21 +1,27 @@
 public class TrafficLight {
   private int mode; //numbers that create a two-direction(2) or three-direction(3) streetlight
-  private int orientation; //A multiple of 90
+  private int angle; //A multiple of 90
   private int currentTick; //ticks left until next switch
   private int tickTiming; //time until it changes orientation
   private boolean isStop; //Is the traffic light stopping cars?
+  private TrafficTriangle shape; //Current state of drawing of light
+  
 
   public TrafficLight(int mode, int startOrientation) {
     this.mode = mode;
-    orientation = startOrientation;
+    angle = startOrientation;
     currentTick = 100;
     tickTiming = 100;
     isStop = false;
   }
 
   //Public Accessors
-  public int getOrientation() {
-    return orientation % 360;
+  public int getAngle() {
+    return angle % 360;
+  }
+
+  public int timeRemain(){
+    return currentTick;
   }
 
   public int getTick() {
@@ -32,9 +38,9 @@ public class TrafficLight {
 
   //Changes traffic light's orientation after a certain amount of time, 
   //or changes reduces time until next switch
-  public void switchOrient() {
+  public void update() {
     if (currentTick == 0) {
-      orientation = (orientation+2)%4;
+      angle = (angle + 180) % 360;
       currentTick = tickTiming;
     } else {
       currentTick--;
@@ -51,6 +57,6 @@ public class TrafficLight {
   }
   
   public void drawMe(Intersection inters){
-    TrafficTriangle t = new TrafficTriangle(inters.xcor,inters.ycor,90);
+    shape = new TrafficTriangle(inters.xcor,inters.ycor,angle);
   }
 }  
