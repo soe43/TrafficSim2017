@@ -110,7 +110,7 @@ public class Road extends GridSquare {
 
     if (stopTimer <= 0) {
       reverseStopSign();
-      stopTimer = origStopTimer;
+      stopTimer = origStopTimer + 50; //make it a little longer so cars can clear out
     } else {
       stopTimer--;
     }
