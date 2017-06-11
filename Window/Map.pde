@@ -32,6 +32,7 @@ public class Map {
     verticalRoad(7, gridC, 270);
     verticalRoad(4, gridC, 270);
     findNeighbors();
+    addStops();
   }
 
   public void addStops() {
@@ -345,6 +346,13 @@ public class Map {
         for (int c = 0; c < data[r].length; c++) {
           fill(data[r][c].getColor());
           rect(r * 50, c * 50, 50, 50, 7);
+          
+          if (data[r][c] instanceof Road && data[r][c].updateStopSign()) {
+          fill(255, 30, 41); //red!
+          rectMode(CENTER); //easier to draw
+          rect(r * 50 + 25, c * 50 + 25, 10, 10);
+          rectMode(CORNER); //changing it back
+        }
         }
       }
     }

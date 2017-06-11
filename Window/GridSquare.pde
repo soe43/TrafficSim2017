@@ -42,6 +42,23 @@ public class GridSquare {
     stopSignPotential = !stopSignPotential;
   }
 
+  public boolean updateStopSign() {
+    if (!stopSignPotential) return false;
+
+    if (stopTimer <= 0) {
+      reverseStopSign();
+      stopTimer = origStopTimer + 50; //make it a little longer so cars can clear out
+    } else {
+      stopTimer--;
+    }
+
+    return stopSign;
+  }
+
+  public void reverseStopSign() {
+    stopSign = !stopSign;
+  }
+
   public ArrayList<String> getNeighbors() {
     return neighbors;
   }
