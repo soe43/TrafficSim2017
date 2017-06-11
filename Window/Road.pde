@@ -6,7 +6,6 @@ public class Road extends GridSquare {
   private boolean isDrivable = true;
   private ArrayList<Car> carsHere = new ArrayList<Car>();
   //private ArrayList<TrafficLight> lights = new ArrayList<TrafficLight>();
-  private boolean stop;
   private ArrayList<String> neighbors = new ArrayList<String>();
   private int heading;
 
@@ -17,11 +16,13 @@ public class Road extends GridSquare {
   private int stopTimer = origStopTimer; 
 
 
-  public Road(int r, int c, int angle, boolean start, boolean end) {
+  public Road(int r, int c, int angle, boolean start, boolean end, boolean stop) {
     super(r, c, 0); //set to black
     isStart = start;
     isEnd = end;
     heading = angle % 360;
+    stopSignPotential = stop;
+    stopSign = stop;
   }
 
   public boolean isStart() {
@@ -106,6 +107,11 @@ public class Road extends GridSquare {
   
   public void setStopPotential(){
     stopSignPotential = !stopSignPotential;
+  }
+  
+  public void setStopTimer(int t){
+    origStopTimer = t;
+    stopTimer = t;
   }
 
   public boolean updateStopSign() {

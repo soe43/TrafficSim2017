@@ -109,9 +109,9 @@ public class Car {
           distToStopSign = 50 - (xcor % 50);
         }
       }
-
-      speed -= 2.0 * speed / distToStopSign;
-    } else {
+    }
+    speed -= 2.0 * speed / distToStopSign;
+    else {
       float distToCar = 0.0;
       if (angle == 0 || angle == 180) {
         distToCar = Math.abs(xcor - next.getX());
@@ -147,6 +147,7 @@ public class Car {
         speed -= decSpeedCar;
       }
     }
+
 
     //to prevent negative speed:
     if (speed < 0) {
