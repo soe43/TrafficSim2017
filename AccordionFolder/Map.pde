@@ -26,9 +26,9 @@ public class Map {
     if (mapToggle == 0) { //super basic 
       horizontalRoad(4, gridR, 0);
       horizontalRoad(8, gridR, 180);
-      data[8][4] = new Road(2, 4, 0, false, false, true);
       verticalRoad(10, gridC, 90);
       verticalRoad(5, gridC, 270);
+      data[5][4] = new Road(5, 4, 0, false, false, true);
     }
     if (mapToggle == 1) { //medium level 
       horizontalRoad(2, gridR, 0);
