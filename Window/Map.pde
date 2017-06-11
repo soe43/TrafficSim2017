@@ -31,6 +31,19 @@ public class Map {
     horizontalRoad(8, gridR, 180);
     verticalRoad(7, gridC, 270);
     verticalRoad(4, gridC, 270);
+    findNeighbors();
+    for(int i = 1; i < gridR -1;i++){
+      for(int k = 1; k < gridC - 1;k++){
+        System.out.println(data[i][k].getNeighbors());
+      }
+    }
+    /*
+    System.out.println(data[7][4].getNeighbors());
+    System.out.println(data[7][8].getNeighbors());
+    System.out.println(data[4][8].getNeighbors());
+    System.out.println(data[4][4].getNeighbors());
+    System.out.println(data[2][9].getNeighbors());
+    */
   }
 
 
@@ -38,50 +51,64 @@ public class Map {
     for (int r = 1; r < gridR - 1; r++) {
       for (int c = 1; c < gridC - 1; c++) {
         if (data[r][c] instanceof Road) {
+          if (data[r+1][c].canDrive()) {
+            data[r][c].addNeighbor("S");
+          }
+          if (data[r-1][c].canDrive()) {
+            data[r][c].addNeighbor("N");
+          }
+          if (data[r][c+1].canDrive()) {
+            data[r][c].addNeighbor("E");
+          }
+          if(data[r][c-1].canDrive()){
+            data[r][c].addNeighbor("W");
+          }
+          /*
           if (data[r][c].getHeading() == 0) {
-            if (data[r+1][c].canDrive()) {
-              data[r][c].addNeighbor("S");
-            }
-            if (data[r-1][c].canDrive()) {
-              data[r][c].addNeighbor("N");
-            }
-            if (data[r][c+1].canDrive()) {
-              data[r][c].addNeighbor("E");
-            }
-          }
-          if (data[r][c].getHeading() == 90) {
-            if (data[r][c-1].canDrive()) {
-              data[r][c].addNeighbor("W");
-            }
-            if (data[r-1][c].canDrive()) {
-              data[r][c].addNeighbor("N");
-            }
-            if (data[r][c+1].canDrive()) {
-              data[r][c].addNeighbor("E");
-            }
-          }
-          if(data[r][c].getHeading() == 180){
-            if (data[r+1][c].canDrive()) {
-              data[r][c].addNeighbor("S");
-            }
-            if (data[r-1][c].canDrive()) {
-              data[r][c].addNeighbor("N");
-            }
-            if (data[r][c-1].canDrive()) {
-              data[r][c].addNeighbor("W");
-            }
-          }
-          if(data[r][c].getHeading() == 270){
-            if (data[r+1][c].canDrive()) {
-              data[r][c].addNeighbor("S");
-            }
-            if (data[r][c-1].canDrive()) {
-              data[r][c].addNeighbor("W");
-            }
-            if (data[r][c+1].canDrive()) {
-              data[r][c].addNeighbor("E");
-            }
-          }
+           if (data[r+1][c].canDrive()) {
+           data[r][c].addNeighbor("S");
+           }
+           if (data[r-1][c].canDrive()) {
+           data[r][c].addNeighbor("N");
+           }
+           if (data[r][c+1].canDrive()) {
+           data[r][c].addNeighbor("E");
+           }
+           }
+           else if (data[r][c].getHeading() == 90) {
+           if (data[r][c-1].canDrive()) {
+           data[r][c].addNeighbor("W");
+           }
+           if (data[r-1][c].canDrive()) {
+           data[r][c].addNeighbor("N");
+           }
+           if (data[r][c+1].canDrive()) {
+           data[r][c].addNeighbor("E");
+           }
+           }
+           else if(data[r][c].getHeading() == 180){
+           if (data[r+1][c].canDrive()) {
+           data[r][c].addNeighbor("S");
+           }
+           if (data[r-1][c].canDrive()) {
+           data[r][c].addNeighbor("N");
+           }
+           if (data[r][c-1].canDrive()) {
+           data[r][c].addNeighbor("W");
+           }
+           }
+           else if(data[r][c].getHeading() == 270){
+           if (data[r+1][c].canDrive()) {
+           data[r][c].addNeighbor("S");
+           }
+           if (data[r][c-1].canDrive()) {
+           data[r][c].addNeighbor("W");
+           }
+           if (data[r][c+1].canDrive()) {
+           data[r][c].addNeighbor("E");
+           }
+           }
+           */
         }
       }
     }
@@ -165,8 +192,6 @@ public class Map {
 
   //called as the update function in the Map class
   public void updateCar(Car c) {
-
-
 
     //changing current, nextUp, nextLeft, nextRight FOR EACH DIFFERENT ORIENTATION
     //draw diagrams for this (will be easier to understand, trust me...

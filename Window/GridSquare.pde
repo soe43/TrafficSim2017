@@ -5,6 +5,7 @@ public class GridSquare {
   private int colour = 0; //single, 0-256 for now (could change later to trio)
   private int row, col;
   private boolean isDrivable = false;
+  private ArrayList<String> neighbors = new ArrayList<String>();
 
   public GridSquare(int r, int c, int colour) {
     this.colour = colour;
@@ -27,10 +28,14 @@ public class GridSquare {
   public int getCol() {
     return col;
   }
-  
+
   //adding neighbors to each road
   public void addNeighbor(String s) {
     neighbors.add(s);
+  }
+
+  public ArrayList<String> getNeighbors() {
+    return neighbors;
   }
 
   //always false;
@@ -38,10 +43,10 @@ public class GridSquare {
     return isDrivable;
   }
 
-  
-  
+
+
   //IN ORDER TO MAKE FUNCTIONS IN ROAD CLASS WORK:
-  
+
   public void addCar(Car c) {
     System.out.println("Can't add Car to a GridSquare! Needs to be a Road!");
   }
@@ -50,16 +55,16 @@ public class GridSquare {
     //do nothing 
     return;
   }
-  
-  public ArrayList<Car> carsHere(){
+
+  public ArrayList<Car> carsHere() {
     throw new UnsupportedOperationException();
   }
-  
-  public int getHeading(){
+
+  public int getHeading() {
     throw new UnsupportedOperationException();
   }
-  
-  public void setHeading(int h){
+
+  public void setHeading(int h) {
     throw new UnsupportedOperationException();
   }
 }
