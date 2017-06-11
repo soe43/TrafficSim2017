@@ -6,6 +6,10 @@ public class GridSquare {
   private int row, col;
   private boolean isDrivable = false;
   private ArrayList<String> neighbors = new ArrayList<String>();
+  private boolean stopSignPotential = false; //has potential for stopSign
+  private boolean stopSign = false;
+  private int origStopTimer = 150;
+  private int stopTimer = origStopTimer; 
 
   public GridSquare(int r, int c, int colour) {
     this.colour = colour;
@@ -32,6 +36,10 @@ public class GridSquare {
   //adding neighbors to each road
   public void addNeighbor(String s) {
     neighbors.add(s);
+  }
+
+  public void setStopPotential() {
+    stopSignPotential = !stopSignPotential;
   }
 
   public ArrayList<String> getNeighbors() {
