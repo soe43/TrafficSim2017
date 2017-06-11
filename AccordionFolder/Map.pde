@@ -28,7 +28,7 @@ public class Map {
       horizontalRoad(8, gridR, 180);
       verticalRoad(10, gridC, 90);
       verticalRoad(5, gridC, 270);
-      data[5][4] = new Road(5, 4, 0, false, false, true);
+      data[5][3] = new Road(5, 3, 0, false, false, true);
     }
     if (mapToggle == 1) { //medium level 
       horizontalRoad(2, gridR, 0);
