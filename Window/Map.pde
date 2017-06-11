@@ -40,6 +40,7 @@ public class Map {
       for (int c = 0; c < gridC; c++) {
         if (data[r][c].getNeighbors().size() == 4) {
           data[r][c].setStopPotential();
+          data[r][c].setStop();
         }
       }
     }
@@ -305,7 +306,6 @@ public class Map {
 
 
       c.turn();
-
       c.move();
 
       GridSquare gs = c.previous();

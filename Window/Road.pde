@@ -16,13 +16,11 @@ public class Road extends GridSquare {
   private int stopTimer = origStopTimer; 
 
 
-  public Road(int r, int c, int angle, boolean start, boolean end, boolean stop) {
+  public Road(int r, int c, int angle, boolean start, boolean end) {
     super(r, c, 0); //set to black
     isStart = start;
     isEnd = end;
     heading = angle % 360;
-    stopSignPotential = stop;
-    stopSign = stop;
   }
 
   public boolean isStart() {

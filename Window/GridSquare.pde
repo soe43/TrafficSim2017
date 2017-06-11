@@ -6,6 +6,7 @@ public class GridSquare {
   private int row, col;
   private boolean isDrivable = false;
   private ArrayList<String> neighbors = new ArrayList<String>();
+ 
   private boolean stopSignPotential = false; //has potential for stopSign
   private boolean stopSign = false;
   private int origStopTimer = 150;
@@ -41,22 +42,26 @@ public class GridSquare {
   public void setStopPotential() {
     stopSignPotential = !stopSignPotential;
   }
+  
+  public void setStop(){
+    stopSign = !stopSign;
+  }
+  
+  public boolean hasStopSign(){
+    return stopSign;
+  }
 
   public boolean updateStopSign() {
     if (!stopSignPotential) return false;
 
     if (stopTimer <= 0) {
-      reverseStopSign();
+      setStop();
       stopTimer = origStopTimer + 50; //make it a little longer so cars can clear out
     } else {
       stopTimer--;
     }
 
     return stopSign;
-  }
-
-  public void reverseStopSign() {
-    stopSign = !stopSign;
   }
 
   public ArrayList<String> getNeighbors() {
