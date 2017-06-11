@@ -33,10 +33,10 @@ public class GridSquare {
     return isDrivable;
   }
 
-  
-  
+
+
   //IN ORDER TO MAKE FUNCTIONS IN ROAD CLASS WORK:
-  
+
   public void addCar(Car c) {
     System.out.println("Can't add Car to a GridSquare! Needs to be a Road!");
   }
@@ -45,16 +45,24 @@ public class GridSquare {
     //do nothing 
     return;
   }
-  
-  public ArrayList<Car> carsHere(){
+
+  public ArrayList<Car> carsHere() {
     throw new UnsupportedOperationException();
   }
-  
-  public int getHeading(){
+
+  public int getHeading() {
     throw new UnsupportedOperationException();
   }
-  
-  public void setHeading(int h){
+
+  public void setHeading(int h) {
     throw new UnsupportedOperationException();
+  }
+
+  public boolean hasStopSign() {
+    return false;
+  }
+
+  public boolean updateStopSign() {
+    return false;
   }
 }

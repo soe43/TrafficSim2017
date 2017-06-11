@@ -23,22 +23,23 @@ public class Map {
     }
 
     //SETTING UP THE MAP'S ROADS:
-    if(mapToggle == 0){ //super basic 
+    if (mapToggle == 0) { //super basic 
       horizontalRoad(4, gridR, 0);
       horizontalRoad(8, gridR, 180);
+      data[2][4] = new Road(2, 4, 0, false, false, true);
       verticalRoad(10, gridC, 90);
       verticalRoad(5, gridC, 270);
     }
-    if(mapToggle == 1){ //medium level 
+    if (mapToggle == 1) { //medium level 
       horizontalRoad(2, gridR, 0);
       horizontalRoad(6, gridR, 180);
       horizontalRoad(10, gridR, 0);
       verticalRoad(2, gridC, 90);
       verticalRoad(6, gridC, 270);
       verticalRoad(9, gridC, 90);
-      verticalRoad(13, gridC, 270);    
+      verticalRoad(13, gridC, 270);
     }
-    if(mapToggle == 2){ //complex 
+    if (mapToggle == 2) { //complex 
       horizontalRoad(2, gridR, 0);
       horizontalRoad(4, gridR, 180);
       horizontalRoad(6, gridR, 180);
@@ -49,7 +50,7 @@ public class Map {
       verticalRoad(6, gridC, 270);
       verticalRoad(9, gridC, 90);
       verticalRoad(11, gridC, 90);
-      verticalRoad(13, gridC, 270);    
+      verticalRoad(13, gridC, 270);
     }
   }
 
@@ -289,9 +290,14 @@ public class Map {
       for (int c = 0; c < data[r].length; c++) {
         fill(data[r][c].getColor());
         rect(r * 50, c * 50, 50, 50, 7);
+
+        if (data[r][c] instanceof Road && data[r][c].updateStopSign()) {
+          fill(255, 30, 41); //red!
+          rectMode(CENTER); //easier to draw
+          rect(r * 50 + 25, c * 50 + 25, 10, 10);
+          rectMode(CORNER); //changing it back
+        }
       }
     }
   }
-  
-  
 }
