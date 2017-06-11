@@ -24,6 +24,28 @@ public class Road extends GridSquare {
     return isEnd;
   }
 
+  public void addLights() {
+    if (neighbors.size() <= 2) {
+      return;
+    } else if (neighbors.size() == 3) {
+      //checks to see if road is a straight one
+      if (neighbors.contains("N") && neighbors.contains("S") && neighbors.contains("W")){
+        
+      } else if (neighbors.contains("N") && neighbors.contains("S") && neighbors.contains("E")) {
+        
+      }
+      else if (neighbors.contains("N") && neighbors.contains("W") && neighbors.contains("E")) {
+        
+      }
+      else if (neighbors.contains("N") && neighbors.contains("S") && neighbors.contains("W")) {
+        
+      }
+      else if (neighbors.contains("N") && neighbors.contains("S") && neighbors.contains("W")) {
+        
+      }
+    }
+  }
+
   //always true
   public boolean canDrive() {
     return isDrivable;

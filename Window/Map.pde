@@ -32,18 +32,7 @@ public class Map {
     verticalRoad(7, gridC, 270);
     verticalRoad(4, gridC, 270);
     findNeighbors();
-    for(int i = 1; i < gridR -1;i++){
-      for(int k = 1; k < gridC - 1;k++){
-        System.out.println(data[i][k].getNeighbors());
-      }
-    }
-    /*
-    System.out.println(data[7][4].getNeighbors());
-    System.out.println(data[7][8].getNeighbors());
-    System.out.println(data[4][8].getNeighbors());
-    System.out.println(data[4][4].getNeighbors());
-    System.out.println(data[2][9].getNeighbors());
-    */
+    
   }
 
 
