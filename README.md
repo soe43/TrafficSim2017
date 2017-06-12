@@ -12,10 +12,10 @@ TrafficSim2017 is a simulation created by William Soe and Ben Weinstein. It is a
 -Functioning stop lights that control traffic flow.
 -Accordion Menu.
 **Menu Features**
--Toggle between 3 built-in maps.
--Slider for controlling the frequency of Car spawns. 
--Clear all Cars button.  
--Slider to adjust the rate at which TrafficLights switch.   
+-Toggle between 3 built-in maps.  
+-Slider for controlling the frequency of Car spawns.   
+-Clear all Cars button.    
+-Slider to adjust the rate at which TrafficLights switch.     
 
 ### Features to be Implemented:
 -Menu can toggle build mode system, where user build roads with mouse clicks.   
