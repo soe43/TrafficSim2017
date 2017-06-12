@@ -105,6 +105,10 @@ public class Road extends GridSquare {
       }
     }
   }
+  
+  public void removeCar(Car c){
+    carsHere.remove(c);
+  }
 
   public void setStopTimer(int t) {
     origStopTimer = t;
@@ -127,5 +131,39 @@ public class Road extends GridSquare {
 
   public void reverseStopSign() {
     stopSign = !stopSign;
+  }
+  
+  
+  
+  public void explode(ArrayList<Car> cars) {
+    if(carsHere.size() <= 1) return;
+    for(int i = 0; i < carsHere.size() - 1; i++){
+      Car c1 = carsHere.get(i);
+      for(int j = 0; j < carsHere.size(); j++){
+        Car c2 = carsHere.get(j);
+        if(c1 != c2 && (heading == 0 || heading == 180)){
+          if(Math.abs(c1.getX() - c2.getX()) <= 5.0){
+            removeCar(c1);
+            removeCar(c2);
+            cars.remove(c1);
+            cars.remove(c2);
+            c1.explode();
+            c2.explode(); 
+            return;
+          }
+        }
+        if(c1 != c2 && (heading == 90 || heading == 270)){
+          if(Math.abs(c1.getY() - c2.getX()) <= 5.0){
+            removeCar(c1);
+            removeCar(c2);
+            cars.remove(c1);
+            cars.remove(c2);
+            c1.explode();
+            c2.explode();
+            return;
+          }
+        }
+      }
+    }
   }
 }

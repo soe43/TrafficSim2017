@@ -26,91 +26,91 @@ public class Map {
     if (mapToggle == 0) { //super basic 
       horizontalRoad(4, gridR, 0);
       horizontalRoad(8, gridR, 180);
-      data[9][4] = new Road(2, 4, 0, false, false, true,0);
-      data[4][4] = new Road(2, 4, 0, false, false, true,0);
-      data[6][8] = new Road(2, 4, 0, false, false, true,0);
-      data[11][8] = new Road(2, 4, 0, false, false, true,0);     
+      data[9][4] = new Road(2, 4, 0, false, false, true, 0);
+      data[4][4] = new Road(2, 4, 0, false, false, true, 0);
+      data[6][8] = new Road(2, 4, 0, false, false, true, 0);
+      data[11][8] = new Road(2, 4, 0, false, false, true, 0);     
       verticalRoad(10, gridC, 90);
       verticalRoad(5, gridC, 270);
-      data[5][3] = new Road(2, 4, 0, false, false, true,1);
-      data[5][7] = new Road(2, 4, 0, false, false, true,1);
-      data[10][5] = new Road(2, 4, 0, false, false, true,1);
-      data[10][9] = new Road(2, 4, 0, false, false, true,1);
+      data[5][3] = new Road(2, 4, 0, false, false, true, 1);
+      data[5][7] = new Road(2, 4, 0, false, false, true, 1);
+      data[10][5] = new Road(2, 4, 0, false, false, true, 1);
+      data[10][9] = new Road(2, 4, 0, false, false, true, 1);
     }
     if (mapToggle == 1) { //medium level 
       horizontalRoad(2, gridR, 0);
       horizontalRoad(6, gridR, 180);
       horizontalRoad(9, gridR, 0);
-      data[1][2] = new Road(2, 4, 0, false, false, true,0);
-      data[5][2] = new Road(2, 4, 0, false, false, true,0);
-      data[8][2] = new Road(2, 4, 0, false, false, true,0);
-      data[12][2] = new Road(2, 4, 0, false, false, true,0);
-      data[3][6] = new Road(2, 4, 0, false, false, true,0);
-      data[7][6] = new Road(2, 4, 0, false, false, true,0);
-      data[10][6] = new Road(2, 4, 0, false, false, true,0);
-      data[14][6] = new Road(2, 4, 0, false, false, true,0);
-      data[1][9] = new Road(2, 4, 0, false, false, true,0);
-      data[5][9] = new Road(2, 4, 0, false, false, true,0);
-      data[8][9] = new Road(2, 4, 0, false, false, true,0);
-      data[12][9] = new Road(2, 4, 0, false, false, true,0);
+      data[1][2] = new Road(2, 4, 0, false, false, true, 0);
+      data[5][2] = new Road(2, 4, 0, false, false, true, 0);
+      data[8][2] = new Road(2, 4, 0, false, false, true, 0);
+      data[12][2] = new Road(2, 4, 0, false, false, true, 0);
+      data[3][6] = new Road(2, 4, 0, false, false, true, 0);
+      data[7][6] = new Road(2, 4, 0, false, false, true, 0);
+      data[10][6] = new Road(2, 4, 0, false, false, true, 0);
+      data[14][6] = new Road(2, 4, 0, false, false, true, 0);
+      data[1][9] = new Road(2, 4, 0, false, false, true, 0);
+      data[5][9] = new Road(2, 4, 0, false, false, true, 0);
+      data[8][9] = new Road(2, 4, 0, false, false, true, 0);
+      data[12][9] = new Road(2, 4, 0, false, false, true, 0);
       verticalRoad(2, gridC, 90);
       verticalRoad(6, gridC, 270);
       verticalRoad(9, gridC, 90);
       verticalRoad(13, gridC, 270);
-      data[2][3] = new Road(2, 4, 0, false, false, true,1);
-      data[9][3] = new Road(2, 4, 0, false, false, true,1);
-      data[2][7] = new Road(2, 4, 0, false, false, true,1);
-      data[9][7] = new Road(2, 4, 0, false, false, true,1);
-      data[2][10] = new Road(2, 4, 0, false, false, true,1);
-      data[9][10] = new Road(2, 4, 0, false, false, true,1);
-      data[6][1] = new Road(2, 4, 0, false, false, true,1);
-      data[13][1] = new Road(2, 4, 0, false, false, true,1);
-      data[6][5] = new Road(2, 4, 0, false, false, true,1);
-      data[13][5] = new Road(2, 4, 0, false, false, true,1);
-      data[6][8] = new Road(2, 4, 0, false, false, true,1);
-      data[13][8] = new Road(2, 4, 0, false, false, true,1);
+      data[2][3] = new Road(2, 4, 0, false, false, true, 1);
+      data[9][3] = new Road(2, 4, 0, false, false, true, 1);
+      data[2][7] = new Road(2, 4, 0, false, false, true, 1);
+      data[9][7] = new Road(2, 4, 0, false, false, true, 1);
+      data[2][10] = new Road(2, 4, 0, false, false, true, 1);
+      data[9][10] = new Road(2, 4, 0, false, false, true, 1);
+      data[6][1] = new Road(2, 4, 0, false, false, true, 1);
+      data[13][1] = new Road(2, 4, 0, false, false, true, 1);
+      data[6][5] = new Road(2, 4, 0, false, false, true, 1);
+      data[13][5] = new Road(2, 4, 0, false, false, true, 1);
+      data[6][8] = new Road(2, 4, 0, false, false, true, 1);
+      data[13][8] = new Road(2, 4, 0, false, false, true, 1);
     }
     if (mapToggle == 2) { //two way roads 
       horizontalRoad(4, gridR, 0);
       horizontalRoad(5, gridR, 180);
       horizontalRoad(8, gridR, 0);
       horizontalRoad(9, gridR, 180);
-      data[2][4] = new Road(2, 4, 0, false, false, true,0);
-      data[4][5] = new Road(2, 4, 0, false, false, true,0); 
-      data[6][4] = new Road(2, 4, 0, false, false, true,0);
-      data[8][5] = new Road(2, 4, 0, false, false, true,0);
-      data[10][4] = new Road(2, 4, 0, false, false, true,0);
-      data[12][5] = new Road(2, 4, 0, false, false, true,0);
-      data[2][8] = new Road(2, 4, 0, false, false, true,0);
-      data[4][9] = new Road(2, 4, 0, false, false, true,0); 
-      data[6][8] = new Road(2, 4, 0, false, false, true,0);
-      data[8][9] = new Road(2, 4, 0, false, false, true,0);
-      data[10][8] = new Road(2, 4, 0, false, false, true,0);
-      data[12][9] = new Road(2, 4, 0, false, false, true,0);
+      data[2][4] = new Road(2, 4, 0, false, false, true, 0);
+      data[4][5] = new Road(2, 4, 0, false, false, true, 0); 
+      data[6][4] = new Road(2, 4, 0, false, false, true, 0);
+      data[8][5] = new Road(2, 4, 0, false, false, true, 0);
+      data[10][4] = new Road(2, 4, 0, false, false, true, 0);
+      data[12][5] = new Road(2, 4, 0, false, false, true, 0);
+      data[2][8] = new Road(2, 4, 0, false, false, true, 0);
+      data[4][9] = new Road(2, 4, 0, false, false, true, 0); 
+      data[6][8] = new Road(2, 4, 0, false, false, true, 0);
+      data[8][9] = new Road(2, 4, 0, false, false, true, 0);
+      data[10][8] = new Road(2, 4, 0, false, false, true, 0);
+      data[12][9] = new Road(2, 4, 0, false, false, true, 0);
       /*
       data[10][6] = new Road(2, 4, 0, false, false, true,0);
-      data[14][6] = new Road(2, 4, 0, false, false, true,0);
-      data[1][10] = new Road(2, 4, 0, false, false, true,0);
-      data[5][10] = new Road(2, 4, 0, false, false, true,0);
-      data[8][10] = new Road(2, 4, 0, false, false, true,0);
-      data[12][10] = new Road(2, 4, 0, false, false, true,0);
-      */
+       data[14][6] = new Road(2, 4, 0, false, false, true,0);
+       data[1][10] = new Road(2, 4, 0, false, false, true,0);
+       data[5][10] = new Road(2, 4, 0, false, false, true,0);
+       data[8][10] = new Road(2, 4, 0, false, false, true,0);
+       data[12][10] = new Road(2, 4, 0, false, false, true,0);
+       */
       verticalRoad(3, gridC, 270);
       verticalRoad(7, gridC, 90);
       verticalRoad(11, gridC, 270);
-      data[3][3] = new Road(2, 4, 0, false, false, true,1);
-      data[3][7] = new Road(2, 4, 0, false, false, true,1);
-      data[11][3] = new Road(2, 4, 0, false, false, true,1);
-      data[11][7] = new Road(2, 4, 0, false, false, true,1);
-      data[7][10] = new Road(2, 4, 0, false, false, true,1);
-      data[7][6] = new Road(2, 4, 0, false, false, true,1);
+      data[3][3] = new Road(2, 4, 0, false, false, true, 1);
+      data[3][7] = new Road(2, 4, 0, false, false, true, 1);
+      data[11][3] = new Road(2, 4, 0, false, false, true, 1);
+      data[11][7] = new Road(2, 4, 0, false, false, true, 1);
+      data[7][10] = new Road(2, 4, 0, false, false, true, 1);
+      data[7][6] = new Road(2, 4, 0, false, false, true, 1);
       /*
       data[13][1] = new Road(2, 4, 0, false, false, true,1);
-      data[6][5] = new Road(2, 4, 0, false, false, true,1);
-      data[13][5] = new Road(2, 4, 0, false, false, true,1);
-      data[6][9] = new Road(2, 4, 0, false, false, true,1);
-      data[13][9] = new Road(2, 4, 0, false, false, true,1);
-      */
+       data[6][5] = new Road(2, 4, 0, false, false, true,1);
+       data[13][5] = new Road(2, 4, 0, false, false, true,1);
+       data[6][9] = new Road(2, 4, 0, false, false, true,1);
+       data[13][9] = new Road(2, 4, 0, false, false, true,1);
+       */
     }
   }
 
@@ -320,10 +320,6 @@ public class Map {
     c.updateRoadList();
 
     c.drawMe();
-
-    //is this gonna be mad slow?
-    //Solution: create ANOTHER instance variable for the Car, so that it keeps track
-    //of the previous Road, too.
   }
 
   //accessor methods:
@@ -344,7 +340,6 @@ public class Map {
     return killable.indexOf(gs) != -1;
   }
 
-  //only gets called once (in the setup of BasicMap)
   public void drawMap() {
     for (int r = 0; r < data.length; r++) {
       for (int c = 0; c < data[r].length; c++) {
@@ -360,4 +355,16 @@ public class Map {
       }
     }
   }
+  
+  public void explodeCars(ArrayList<Car> cars){
+    for(int r = 0; r < data.length; r++){
+      for(int c = 0; c < data[r].length; c++){
+        if(data[r][c] instanceof Road){
+          data[r][c].explode(cars);
+        }
+      }
+    }
+  }
+  
+  
 }

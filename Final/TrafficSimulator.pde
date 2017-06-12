@@ -2,8 +2,7 @@ import java.util.*;
 
 public class TrafficSimulator {
   ArrayList<Car> cars = new ArrayList<Car>();
-  //ArrayList<StopLight> lights = new ArrayList<StopLight>();
-
+  
   private Map data;
   private float tickFrequency = 120;
   private float timer = tickFrequency;
@@ -11,6 +10,10 @@ public class TrafficSimulator {
   private boolean hasMapToggleChanged = false;
   private int mapToggle = 0;
   private int carSpeed;
+
+  //oh, you'll see what this is... :P
+  private boolean explosionMode = false; 
+
 
   public TrafficSimulator() {
     data = new Map(800/50, 650/50, 800, 650, 0);
@@ -24,7 +27,7 @@ public class TrafficSimulator {
       data.drawMap();
       hasMapToggleChanged = false;
     }
-    
+
     if (isPaused) return;
 
     background(12, 83, 124);
@@ -87,10 +90,24 @@ public class TrafficSimulator {
   public void updateTickFrequency(float t) {
     tickFrequency = t;
   }
-  
+
   //will need to change the remainder (right now, 3) if number of pre-set maps changes
-  public void incMapToggle(){
+  public void incMapToggle() {
     mapToggle = (mapToggle + 1) % 3;
     hasMapToggleChanged = true;
+  }
+
+  public void toggleExplosions() {
+    explosionMode = !explosionMode;
+  }
+
+  public boolean explosions() {
+    return explosionMode;
+  }
+
+
+  //only called when explosionMode == true
+  public void explodeCars() {
+    data.explodeCars(cars);
   }
 }   

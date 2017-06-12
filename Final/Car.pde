@@ -17,7 +17,6 @@ public class Car {
 
   private int stopTick;
 
-
   public Car(float x, float y, float orientation) { 
     //what should be set here?
     width = 15; 
@@ -193,24 +192,13 @@ public class Car {
     }
 
     return closestCar;
-
-    //check if any other Cars are on YOUR Road. If that's true, choose the closest car
-    //if that's false, look at the next Road. 
-    //what to do if it returns null? HANDLED!
-    //probably best to use a Deque... YES USE A DEQUE!!! Not an ArrayList<Road>!!!
   }
+
 
   //Where car adds itself to the road it is currently on, unless already on it.
   public void updateRoadList() {
     current.addCar(this);
   }
-
-
-
-
-
-
-
 
   //turn the car!
   public void turn() {
@@ -396,5 +384,20 @@ public class Car {
 
   public void setPrevious(GridSquare g) {
     previous = g;
+  }
+
+  //EXPLODING (really just drawing an 'x' haha):
+  public void explode() {
+    fill(188, 0, 18);
+    strokeWeight(4);
+    if (angle == 0 || angle == 180) {
+      line(xcor, ycor, xcor + length, ycor + width);
+      line(xcor, ycor + width, xcor + length, ycor);
+    }
+    if (angle == 90 || angle == 270) {
+      line(xcor, ycor, xcor + width, ycor + length);
+      line(xcor + width, ycor, xcor, ycor + length);
+    }
+    strokeWeight(1);
   }
 }

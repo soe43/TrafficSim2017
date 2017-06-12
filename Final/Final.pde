@@ -61,6 +61,13 @@ void gui() {
   accordion.setCollapseMode(Accordion.MULTI);
 }
 
+//EXPLOSIONS:
+public void keyPressed() {
+  if (key == 'E' || key == 'e') {
+    sim.toggleExplosions();
+  }
+}
+
 //the commands:
 
 public void pause() {

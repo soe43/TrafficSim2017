@@ -65,4 +65,8 @@ public class GridSquare {
   public boolean updateStopSign() {
     return false;
   }
+
+  public void explode(ArrayList<Car> cars) {
+    throw new UnsupportedOperationException();
+  }
 }
