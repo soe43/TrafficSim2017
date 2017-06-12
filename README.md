@@ -8,11 +8,11 @@ TrafficSim2017 is a simulation created by William Soe and Ben Weinstein. It is a
 -Basic Map grid system with Roads.  
 -Cars can move and turn and change its velocity.  
 -One-lane Roads. 
--Rudimentary Two-Way Roads.
--Functioning stop lights that control traffic flow.
--Accordion Menu.
-**Menu Features**
--Toggle between 3 built-in maps.  
+-Rudimentary Two-Way Roads.  
+-Functioning stop lights that control traffic flow.    
+-Accordion Menu.    
+**Menu Features**    
+-Toggle between 3 built-in maps.    
 -Slider for controlling the frequency of Car spawns.   
 -Clear all Cars button.    
 -Slider to adjust the rate at which TrafficLights switch.     
