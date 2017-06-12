@@ -15,8 +15,6 @@ public class Car {
 
   private int turnTick = 10;
 
-  private int stopTick;
-
 
   public Car(float x, float y, float orientation) { 
     //what should be set here?
@@ -75,96 +73,39 @@ public class Car {
 
   //LATER: REQUIRES IMPLEMENTATION OF WILL'S STOPLIGHTS!!!
   //adjusting speed based on location of cars (later stoplights) in front of you
-  public void adjustSpeed() {
+  public void adjustSpeed(ArrayList<Car> cars) {
     //EACH ROAD HAS AN ARRAYLIST OF CARS THAT ARE CURRENTLY ON IT!
     //should be edited in Car. Current is a road, so will work that way.
     Car next = getNextCar(); 
-    if (next == null && !(nextUp.hasStopSign())) {
-      //return gradually to origSpeed
-      speed += (origSpeed - speed) / 250; //250 is a constant, subject to change
-
-      if (speed > origSpeed) {
+    if (next == null) {
+      //start return to origSpeed
+      speed += (origSpeed - speed) / 250;
+      
+      if(speed > origSpeed){
         speed = origSpeed;
       }
-
+      
       return;
     }
     //otherwise:
-    else if (next != null && !(nextUp.hasStopSign())) {
-      //speed calculations:
-      float distToCar = 0.0;
-      if (angle == 0 || angle == 180) {
-        distToCar = Math.abs(xcor - next.getX());
-      }
-      if (angle == 90 || angle == 270) {
-        distToCar = Math.abs(ycor - next.getY());
-      }
 
-      //linear deceleration:
-      //NEEDS TO SLOW DOWN FASTER (that's why I multiplied by 2.0)
-      //this constant may need to change as I tweak the Cars' speeds
-      speed -= 2.0 * (speed - next.getSpeed()) / distToCar;
-    } else if (next == null && nextUp.hasStopSign()) {
-      //FOR STOP SIGNS:
-      float distToStopSign = 0.0;
-      if (nextUp.hasStopSign()) {
-        if (angle == 0) {
-          distToStopSign = 50.0 - (xcor % 50);
-        }
-        if (angle == 180) {
-          distToStopSign = xcor % 50;
-        }
-        if (angle == 90) {
-          distToStopSign = ycor % 50;
-        }
-        if (angle == 270) {
-          distToStopSign = 50 - (xcor % 50);
-        }
-      }
-
-      speed -= 2.0 * speed / distToStopSign;
-    } else {
-      float distToCar = 0.0;
-      if (angle == 0 || angle == 180) {
-        distToCar = Math.abs(xcor - next.getX());
-      }
-      if (angle == 90 || angle == 270) {
-        distToCar = Math.abs(ycor - next.getY());
-      }
-
-      float decSpeedCar = 2.0 * (speed - next.getSpeed()) / distToCar;
-
-      //FOR STOP SIGNS:
-      float distToStopSign = 0.0;
-      if (nextUp.hasStopSign()) {
-        if (angle == 0) {
-          distToStopSign = 50.0 - (xcor % 50);
-        }
-        if (angle == 180) {
-          distToStopSign = xcor % 50;
-        }
-        if (angle == 90) {
-          distToStopSign = ycor % 50;
-        }
-        if (angle == 270) {
-          distToStopSign = 50 - (xcor % 50);
-        }
-      }
-
-      float decSpeedStopSign = 2.0 * speed / distToStopSign;
-
-      if (decSpeedStopSign > decSpeedCar) {
-        speed -= decSpeedStopSign;
-      } else {
-        speed -= decSpeedCar;
-      }
+    //speed calculations:
+    float dist = 0.0;
+    if (angle == 0 || angle == 180) {
+      dist = Math.abs(xcor - next.getX());
     }
+    if (angle == 90 || angle == 270) {
+      dist = Math.abs(ycor - next.getY());
+    }
+
+    //linear deceleration:
+    //NEEDS TO SLOW DOWN FASTER
+    speed -= 2 * (speed - next.getSpeed()) / dist;
 
     //to prevent negative speed:
     if (speed < 0) {
       speed = 0;
     }
-      
   }
 
 
@@ -221,85 +162,69 @@ public class Car {
     }
 
     ArrayList<String> choices = new ArrayList<String>(); 
-    if (angle == 0 && Math.abs(xcor % 50 - 25) <= 1) {
-      if (nextUp.canDrive() && nextUp.getHeading() == 0) choices.add("S"); //stay straight
-      if (nextLeft.canDrive() && nextLeft.getHeading() == 90) choices.add("L"); //go left
-      if (nextRight.canDrive() && nextRight.getHeading() == 270) choices.add("R"); //go right
-
-      if (choices.size() == 0) return;
+    if (angle == 0 && xcor % 50 == 25) {
+      if (nextUp.canDrive()) choices.add("S"); //stay straight
+      if (nextLeft.canDrive()) choices.add("L"); //go left
+      if (nextRight.canDrive()) choices.add("R"); //go right
 
       int i = int(random(choices.size())); 
-      if (choices.get(i).equals("L")) { //DONE   
-        xcor = int(xcor / 50) * 50 + 25;
+      if (choices.get(i).equals("L")) {
         angle = 90; 
         xcor -= width / 2; //precalculated adjustment
       }
       if (choices.get(i).equals("R")) {
         angle = 270; 
-        xcor = int(xcor / 50) * 50 + 25;
         xcor -= width / 2; // xcor -= (widthCar) / 2;
       }
       //else do nothing (stay straight)
       move(); 
       turnTick = 10;
-    } else if (angle == 180 && Math.abs(xcor % 50 - 25) <= 1) {
-      if (nextUp.canDrive() && nextUp.getHeading() == 180) choices.add("S"); //stay straight
-      if (nextLeft.canDrive() && nextLeft.getHeading() == 270) choices.add("L"); //go left
-      if (nextRight.canDrive() && nextRight.getHeading() == 90) choices.add("R"); //go right
-
-      if (choices.size() == 0) return;
+    } else if (angle == 180 && xcor % 50 == 25) {
+      if (nextUp.canDrive()) choices.add("S"); //stay straight
+      if (nextLeft.canDrive()) choices.add("L"); //go left
+      if (nextRight.canDrive()) choices.add("R"); //go right
 
       int i = int(random(choices.size())); 
-      if (choices.get(i).equals("L")) { //DONE
+      if (choices.get(i).equals("L")) {
         angle = 270; 
-        xcor = int(xcor / 50) * 50 + 25;
         xcor -= width / 2;
       }
-      if (choices.get(i).equals("R")) { //DONE
+      if (choices.get(i).equals("R")) {
         angle = 90; 
-        xcor = int(xcor / 50) * 50 + 25;
         xcor -= width / 2;
       }
       //else do nothing (stay straight)
       move(); 
       turnTick = 10;
-    } else if (angle == 90 && Math.abs(ycor % 50 - 25) <= 1) {
-      if (nextUp.canDrive() && nextUp.getHeading() == 90) choices.add("S"); //stay straight
-      if (nextLeft.canDrive() && nextLeft.getHeading() == 180) choices.add("L"); //go left
-      if (nextRight.canDrive() && nextRight.getHeading() == 0) choices.add("R"); //go right
-
-      if (choices.size() == 0) return;
+    } else if (angle == 90 && ycor % 50 == 25) {
+      if (nextUp.canDrive()) choices.add("S"); //stay straight
+      if (nextLeft.canDrive()) choices.add("L"); //go left
+      if (nextRight.canDrive()) choices.add("R"); //go right
 
       int i = int(random(choices.size())); 
-      if (choices.get(i).equals("L")) { //DONE
+      if (choices.get(i).equals("L")) {
         angle = 180; 
-        ycor = int(ycor / 50) * 50 + 25;
         ycor -= width / 2;
       }
-      if (choices.get(i).equals("R")) { //DONE
+      if (choices.get(i).equals("R")) {
         angle = 0; 
-        ycor = int(ycor / 50 + 1) * 50.0 - 25;
         ycor -= width / 2;
       }
       //else do nothing (stay straight)
       move(); 
       turnTick = 10;
-    } else if (angle == 270 && Math.abs(ycor % 50 - 25) <= 1) {
-      if (nextUp.canDrive() && nextUp.getHeading() == 270) choices.add("S"); //stay straight
-      if (nextLeft.canDrive() && nextLeft.getHeading() == 0) choices.add("L"); //go left
-      if (nextRight.canDrive() && nextRight.getHeading() == 180) choices.add("R"); //go right
-
-      if (choices.size() == 0) return;
+    } else if (angle == 270 && ycor % 50 == 25) {
+      if (nextUp.canDrive()) choices.add("S"); //stay straight
+      if (nextLeft.canDrive()) choices.add("L"); //go left
+      if (nextRight.canDrive()) choices.add("R"); //go right
 
       int i = int(random(choices.size())); 
-      if (choices.get(i).equals("L")) { //DONE
+      if (choices.get(i).equals("L")) {
         angle = 0; 
-        ycor = int(ycor / 50) * 50 + 25;
         ycor -= width / 2;
       }
-      if (choices.get(i).equals("R")) { //DONE
+      if (choices.get(i).equals("R")) {
         angle = 180; 
-        ycor = int(ycor / 50) * 50 + 25;
         ycor -= width / 2;
       }
       //else do nothing (stay straight)

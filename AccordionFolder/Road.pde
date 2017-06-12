@@ -10,8 +10,9 @@ public class Road extends GridSquare {
   //for stopsign: 
   private boolean stopSignPotential = false; //has potential for stopSign
   private boolean stopSign = false;
-  private int origStopTimer = 150;
+  private int origStopTimer = 250;
   private int stopTimer = origStopTimer; 
+  private int mode = -1;
 
 
   public Road(int r, int c, int angle, boolean start, boolean end) {
@@ -22,13 +23,19 @@ public class Road extends GridSquare {
   }
 
   //for StopSigns: 'stop' always == true
-  public Road(int r, int c, int angle, boolean start, boolean end, boolean stop) {
+  public Road(int r, int c, int angle, boolean start, boolean end, boolean stop, int mode) {
     super(r, c, 0); //set to black
     isStart = start;
     isEnd = end;
     heading = angle;
-    stopSignPotential = stop;
-    stopSign = stop;
+    if (mode == 0) {
+      stopSignPotential = stop;
+      stopSign = stop;
+    }
+    if (mode == 1) {
+      stopSignPotential = stop;
+      stopSign = !stop;
+    }
   }
 
   //accessors:
