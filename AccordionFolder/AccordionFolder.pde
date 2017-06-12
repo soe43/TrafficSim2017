@@ -48,7 +48,8 @@ void gui() {
   cp5.addSlider("tickFrequency")
     .setPosition(10, 60)
     .setSize(100, 30)
-    .setRange(30, 200)
+    .setRange(100, 750)
+    .setValue(400)
     .moveTo(g1);
 
   cp5.addButton("mapToggle")
