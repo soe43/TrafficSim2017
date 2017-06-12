@@ -6,23 +6,28 @@ TrafficSim2017 is a simulation created by William Soe and Ben Weinstein. It is a
 ## Features  
 ### Features Added:  
 -Basic Map grid system with Roads.  
--Cars can move and turn and change its velocity.  
+-Cars can move, turn, and change their velocity based on awareness of stoplights and other cars around them.  
 -One-lane Roads. 
--Rudimentary Two-Way Roads.  
+-Rudimentary Two-Way Roads (literally just two one-way Roads with opposite directions placed next to each other).  
 -Functioning stop lights that control traffic flow.    
 -Accordion Menu.    
-**Menu Features**    
+**Menu Features (Credit to the ControlP5 Library)**    
 -Toggle between 3 built-in maps.    
 -Slider for controlling the frequency of Car spawns.   
 -Clear all Cars button.    
--Slider to adjust the rate at which TrafficLights switch.     
+-Pause button.     
 
 ### Features to be Implemented:
 -Menu can toggle build mode system, where user build roads with mouse clicks.   
 -More Intersection functionality and features.  
 -Two-lanes within a single Road.   
 
-## Development Log:
+## Bugs
+-Cars will overlap each other when too many of them bunch up near intersections.
+-If you pause the simulation, and then try to press any of the other buttons on the Menu, you have to unpause before any changes will show up on the display.
+  
+  
+## Proposed Development Log from Prototype:
 STAGE 0: Research (estimated completion date: 6/2/17, if not done already) 
 Completion of prototype and class outlines
 Research into PVectors and how to use them in relation to our project.
